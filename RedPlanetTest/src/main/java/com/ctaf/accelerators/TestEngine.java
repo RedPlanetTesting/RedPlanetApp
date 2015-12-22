@@ -193,7 +193,7 @@ public class TestEngine extends HtmlReportSupport {
 				capabilitiesForAppium.setCapability("takesScreenshot", true);
 				capabilitiesForAppium.setCapability("autoWebviewTimeout","6000");
 				capabilitiesForAppium.setCapability("locationServicesAuthorized", true);
-				capabilitiesForAppium.setCapability("autoLaunch", true);
+				//capabilitiesForAppium.setCapability("autoLaunch", true);
 				//capabilitiesForAppium.setCapability("fullReset", false);
 				//capabilitiesForAppium.setCapability("noReset", true);
 				capabilitiesForAppium.setCapability("waitForAppScript",
@@ -213,11 +213,6 @@ public class TestEngine extends HtmlReportSupport {
 						capabilitiesForAppium);
 				driver = Iosdriver;
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				//Iosdriver.lockScreen(2);
-				/*if(ActionEngine.isElementDisplayed(By.name("OK"))){
-					driver.findElement(By.name("OK")).click();				
-				}*/
-				//((JavascriptExecutor) driver).executeScript("UIATarget.localTarget().frontMostApp().alert().defaultButton().tap()");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -397,7 +392,9 @@ public class TestEngine extends HtmlReportSupport {
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				webDriver = new ChromeDriver(capabilities);
 			}else if(browser.equalsIgnoreCase("iphone")){
-                //Iosdriver.resetApp();
+				Iosdriver.resetApp();
+
+				
 			}else if (browser.equalsIgnoreCase("Android")) {
 				try {
 				} catch (Exception e) {
