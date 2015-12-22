@@ -397,15 +397,7 @@ public class TestEngine extends HtmlReportSupport {
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				webDriver = new ChromeDriver(capabilities);
 			}else if(browser.equalsIgnoreCase("iphone")){
-				boolean apprun = false;
-				try {
-						if(driver.findElement(By.xpath("//UIAApplication[@name='RP Staging']"))==null){
-							Iosdriver.launchApp();
-						}else{
-                            System.out.println("iOS App is already launched");
-						}
-				} catch (WebDriverException e) {
-				}
+                Iosdriver.resetApp();
 			}else if (browser.equalsIgnoreCase("Android")) {
 				try {
 				} catch (Exception e) {
