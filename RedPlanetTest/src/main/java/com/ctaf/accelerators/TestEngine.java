@@ -402,21 +402,9 @@ public class TestEngine extends HtmlReportSupport {
 						if(driver.findElement(By.xpath("//UIAApplication[@name='RP Staging']"))==null){
 							Iosdriver.launchApp();
 						}else{
-							apprun = true;
+                            System.out.println("iOS App is already launched");
 						}
-					Iosdriver.resetApp();
-						
 				} catch (WebDriverException e) {
-				}
-				try{
-					if(!apprun){
-						Iosdriver.launchApp();
-					}else{
-						System.out.println("iOS App is already launched");
-					}
-					
-				}catch(Exception e){
-					//e.printStackTrace();
 				}
 			}else if (browser.equalsIgnoreCase("Android")) {
 				try {
