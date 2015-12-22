@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -397,14 +399,14 @@ public class TestEngine extends HtmlReportSupport {
 			}else if(browser.equalsIgnoreCase("iphone")){
 				boolean apprun = false;
 				try {
-						/*if(driver.findElement(By.xpath("//UIAApplication[@name='RP Staging']"))==null){
+						if(driver.findElement(By.xpath("//UIAApplication[@name='RP Staging']"))==null){
 							Iosdriver.launchApp();
 						}else{
 							apprun = true;
-						}*/
+						}
 					Iosdriver.resetApp();
 						
-				} catch (Exception e) {
+				} catch (WebDriverException e) {
 				}
 				try{
 					if(!apprun){
