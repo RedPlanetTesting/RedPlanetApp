@@ -397,7 +397,7 @@ public class TestEngine extends HtmlReportSupport {
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				webDriver = new ChromeDriver(capabilities);
 			}else if(browser.equalsIgnoreCase("iphone")){
-                Iosdriver.resetApp();
+                //Iosdriver.resetApp();
 			}else if (browser.equalsIgnoreCase("Android")) {
 				try {
 				} catch (Exception e) {
