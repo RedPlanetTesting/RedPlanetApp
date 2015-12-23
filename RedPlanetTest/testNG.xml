@@ -30,7 +30,6 @@
 			<class name="com.mobile.scripts.RP_011_TestForgotPassword"/>
 			<class name="com.mobile.scripts.RP_012_ValidateSocialNetworkLinksInAboutUs" />
 			<class name="com.mobile.scripts.RP_013_ValidateFooterLinksInAboutUs"/>
-			<!—class name="com.mobile.scripts.RP_018_TestDeepLinks”/—>
 			
 		</classes>
 	</test>
