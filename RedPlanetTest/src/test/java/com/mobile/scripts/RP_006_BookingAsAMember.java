@@ -73,6 +73,7 @@ public class RP_006_BookingAsAMember extends LoginHelper{
 				 click(BookPageLocators.doneButton, "doneButton");
 				 navigateToMyAccount();
 				 waitForElementPresent(AccountPageLocators.upcomingBookings, "upcomingBookings");
+				 Thread.sleep(10000);
 				 if((scrollToText(city))){
 					 String cost = (totalBookingCost.split("[(]"))[0].trim();
 					 System.out.println(" Total Booking Cost is: "+cost);
@@ -103,7 +104,7 @@ public class RP_006_BookingAsAMember extends LoginHelper{
   	@DataProvider(name="testData")
 	public Object[][] createdata1() {
   		return (Object[][]) new Object[][] {
-  			{xlsBook.getCellValue("ValidCredentials", "Value"),xlsBook.getCellValue("ValidCredentials", "password"),
+  			/*{xlsBook.getCellValue("ValidCredentials", "Value"),xlsBook.getCellValue("ValidCredentials", "password"),
 		  		xlsBook.getCellValue("country", "Value"),xlsBook.getCellValue("city", "Value"),
 				xlsBook.getCellValue("fName", "Value"),xlsBook.getCellValue("lName", "Value"),
 				xlsBook.getCellValue("email", "Value"),"",
@@ -116,7 +117,7 @@ public class RP_006_BookingAsAMember extends LoginHelper{
 			  		xlsBook.getCellValue("email", "Value"),xlsBook.getCellValue("invalidCardHolder", "Value"),
 			  		xlsBook.getCellValue("invalidCardNum", "Value"),xlsBook.getCellValue("expirationmonth", "Value"),
 			  		xlsBook.getCellValue("expirationyear", "Value"),xlsBook.getCellValue("invalidCVV", "Value"),
-			  		false,"Validate Hotel Booking as a Guest with invalid payment details"},
+			  		false,"Validate Hotel Booking as a Guest with invalid payment details"},*/
   			{xlsBook.getCellValue("ValidCredentials", "Value"),xlsBook.getCellValue("ValidCredentials", "password"),
   				xlsBook.getCellValue("country", "Value"),xlsBook.getCellValue("city", "Value"),
   				xlsBook.getCellValue("fName", "Value"),xlsBook.getCellValue("lName", "Value"),

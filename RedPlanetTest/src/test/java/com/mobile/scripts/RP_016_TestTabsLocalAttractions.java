@@ -25,7 +25,7 @@ public class RP_016_TestTabsLocalAttractions extends LoginHelper{
 	  try{
 		 TestEngine.testDescription.put(HtmlReportSupport.tc_name,description);
 		 handelSplashScreen();
-		 //handleSplashDialog();
+		 handleSplashDialog();
 		navigateToBookNow();
 		if(description.contains("pickroom")){
 		selectDestination(country, city);
@@ -54,6 +54,7 @@ public class RP_016_TestTabsLocalAttractions extends LoginHelper{
 			click(AccountPageLocators.logInButton, "logInButton");	
 			login(email, password);
 			navigateToHome();
+			 handleSplashDialog();
 			waitForElementPresent(HomePageLocators.localAttractionButton, "localAttractionButton");
 			click(HomePageLocators.localAttractionButton, "localAttractionButton");
 		}

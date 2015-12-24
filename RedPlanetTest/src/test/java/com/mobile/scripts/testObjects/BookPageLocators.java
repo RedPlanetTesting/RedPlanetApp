@@ -60,6 +60,8 @@ public class BookPageLocators extends ActionEngine{
 			.xpath("//*[contains(@name,'CODE')]");
 	public static By codeOnRetrieveBooking = By
 			.xpath("//*[contains(@name,'CODE')]");
+	//booking login
+	public static By loginButtonOnBookScreen = By.xpath("//UIAButton[contains(@name,'LOGIN')]");
 	
 	
 }
