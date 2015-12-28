@@ -15,7 +15,7 @@ import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
 
 public class RP_004_TestGuestBookingFromHome extends LoginHelper{
-	ExcelReader xlsGuestBook = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsGuestBook = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_004");
   @Test(dataProvider = "testData")
   public void testGuestBookingFromHome(String country, String city, String fName,String lName,String email,
@@ -64,7 +64,6 @@ public class RP_004_TestGuestBookingFromHome extends LoginHelper{
 			 if(isElementDisplayed(BookPageLocators.errorPayment)){
 				  Reporter.SuccessReport(description, "Success error message "
 							 + driver.findElement(BookPageLocators.errorPayment).getText());
-				  click(BookPageLocators.okButton, "okButton");
 			 }else			 
 				 Reporter.failureReport(description, "Failed");
 		}
@@ -81,10 +80,7 @@ public class RP_004_TestGuestBookingFromHome extends LoginHelper{
   		return (Object[][]) new Object[][] { 
 			 
   			{xlsGuestBook.getCellValue("country", "Value"),xlsGuestBook.getCellValue("city", "Value"),
-					 xlsGuestBook.getCellValue("fName", "Value"),xlsGuestBook.getCellValue("lName", "Value"),
-					 xlsGuestBook.getCellValue("email", "Value"),"",
-					 "",xlsGuestBook.getCellValue("expirationmonth", "Value"),
-					 xlsGuestBook.getCellValue("cvv", "Value"),
+					 "","", "","", "","", "",
 				"Validate booking of a Hotel as Guest from Home screen with blank details"},
 				{xlsGuestBook.getCellValue("country", "Value"),xlsGuestBook.getCellValue("city", "Value"),
 					  xlsGuestBook.getCellValue("fName", "Value"),xlsGuestBook.getCellValue("lName", "Value"),

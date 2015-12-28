@@ -12,15 +12,18 @@ import com.androidMobile.workflows.LoginHelper;
 import com.ctaf.accelerators.TestEngine;
 import com.ctaf.support.ExcelReader;
 import com.ctaf.support.HtmlReportSupport;
+import com.ctaf.support.ReportStampSupport;
 import com.ctaf.utilities.Reporter;
 
 public class RP_011_Forgot_Password extends LoginHelper{
-	ExcelReader xlsPsw = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsPsw = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_011");
   @Test(dataProvider = "testData")
   public void ResetPassword(String email, String password,String resetPwd,String description) throws Throwable{
 	  System.out.println("In ResetPassword");
 	 String gmailUrl = "https://www.gmail.com" ;
+	 String newResetPwd = resetPwd.concat(ReportStampSupport.randomValue());
+	 System.out.println("random generated reset password "+newResetPwd);
 	try{
 		 TestEngine.testDescription.put(HtmlReportSupport.tc_name, 
 				description);
@@ -31,13 +34,10 @@ public class RP_011_Forgot_Password extends LoginHelper{
 		 navigateToMyAccount();
 		 HomePageHelper.handleRateAppPopUp();
 		  //verify user already loggedIn, if yes signout		  	 
-		  Thread.sleep(2000);
 		  if(isElementDisplayed(LoginPageLocators.editButton)){
-			  Thread.sleep(2000);
 			  waitForElementPresent(AccountPageLocators.signOutButton, 
 					  "sinOutButton");
 			  click(AccountPageLocators.signOutButton, "sinOutButton");
-			  Thread.sleep(2000);
 		  }	
 		  waitForElementPresent(AccountPageLocators.logInButton, "logInButton");
 		  click(AccountPageLocators.logInButton, "logInButton");
@@ -47,7 +47,8 @@ public class RP_011_Forgot_Password extends LoginHelper{
 					  "forgotPasswordLink");		  
 			  clickAndWaitForElementPresent(LoginPageLocators.forgotPasswordLink,
 					  LoginPageLocators.forgotPasswordframe, "forgotPasswordframe");
-			 click(LoginPageLocators.cancelButton, "cancelButton");
+			 //click(LoginPageLocators.cancelButton, "cancelButton");
+			  driver.navigate().back();
 			 if(isElementPresent(LoginPageLocators.signInButton, "signInButton")){
 				 Reporter.SuccessReport(description, "Successfull");
 			 }else
@@ -59,24 +60,38 @@ public class RP_011_Forgot_Password extends LoginHelper{
 			 clickAndWaitForElementPresent(LoginPageLocators.forgotPasswordLink,
 					  LoginPageLocators.forgotPasswordframe, "forgotPasswordframe");
 			 HomePageHelper.handleRateAppPopUp();
-			 Thread.sleep(3000);
 			 waitForElementPresent(LoginPageLocators.emailFieldForForgotPswd, 
 					  "emailFieldForForgotPswd");
 			 type(LoginPageLocators.emailFieldForForgotPswd, email, "emailFieldForForgotPswd");
 			 click(LoginPageLocators.resetButton, "resetButton");
-			 Thread.sleep(3000);
-			 if(isElementPresent(LoginPageLocators.errorPop, "errorPop")){
+			 System.out.println(AndroidDriver2.getPageSource());
+			 if(isElementDisplayed(LoginPageLocators.errorPop)){
 				 String errMsg = getText(LoginPageLocators.errorPop, "errorPop");
 				 System.out.println(" errMsg "+errMsg);
 				 click(LoginPageLocators.okayButtonOnErrorpop, "okayButtonOnErrorpop");
 				 Reporter.SuccessReport(description, "Successfull with error message "+errMsg);
-			 }else
-				 Reporter.failureReport(description, "Failed");
+			 }else{
+				 if((description.contains("InValid email"))){
+					 Reporter.failureReport(description, "Failed");
+				 }else{
+					 isElementPresent(LoginPageLocators.emailFieldForForgotPswd, 
+					  "emailFieldForForgotPswd");
+				 }
+			 }
 		 }
 		 if(description.contains("Reset password and Validate")){			
+			  waitForElementPresent(LoginPageLocators.forgotPasswordLink, 
+					  "forgotPasswordLink");		  
+			  clickAndWaitForElementPresent(LoginPageLocators.forgotPasswordLink,
+					  LoginPageLocators.forgotPasswordframe, "forgotPasswordframe");
+			 waitForElementPresent(LoginPageLocators.emailFieldForForgotPswd, 
+					  "emailFieldForForgotPswd");
+			 
+			 type(LoginPageLocators.emailFieldForForgotPswd, email, "emailFieldForForgotPswd");
+			 click(LoginPageLocators.resetButton, "resetButton");
 			 GmailHelper.ResetPasswordViaGmail(gmailUrl, email, password, resetPwd);
 			 waitForElementPresent(LoginPageLocators.signInButton, "signInButton");
-			 boolean result = login(email, resetPwd);
+			 boolean result = login(email, newResetPwd);
 			 if(result){
 				 Reporter.SuccessReport(description, "Successful");
 			 }else
@@ -93,7 +108,7 @@ public class RP_011_Forgot_Password extends LoginHelper{
 	public Object[][] createdata1() {  		
   		return (Object[][]) new Object[][] { 
 			 
-			  {"","","","Validate Forgot password frame and click on Cancel"},
+			 {"","","","Validate Forgot password frame and click on Cancel"},
 			 {xlsPsw.getCellValue("InvalidEmail", "Value"),"","","Validate error for Reset password with InValid email"},
 			 {"","","","Validate error for Reset password with blank email"},
 			 {xlsPsw.getCellValue("email", "Value"),xlsPsw.getCellValue("password", "Value"),

@@ -51,10 +51,19 @@ public class GmailHelper extends GmailLocators {
 			    type(browser, GmailLocators.resetPassworddInputField, resetPwd, "resetPwdInput");
 			    click(browser, GmailLocators.submitButton, "submitButton");
 			    Thread.sleep(5000);
-			    if(browser.findElement(GmailLocators.successText).getText().equals("Your password has been changed.")){
-			    	Reporter.SuccessReport("Reset password", "Successful");
-			    }else
-			    	Reporter.failureReport("Reset password", "Failed");
+			    if(isElementDisplayed(browser,GmailLocators.successText)){
+			    	
+			    	Reporter.SuccessReport("Reset password", "Successful with message "+
+			    	browser.findElement(GmailLocators.successText).getText());
+			    }else{
+			    	if(waitForElementPresent(browser,GmailLocators.errorMessageOnResetPass,"errorMessageOnResetPass"))
+			    	{
+			    		Reporter.failureReport("Reset password", "Failed with error message "+
+			    				browser.findElement(GmailLocators.errorMessageOnResetPass).getText());
+			    	}else{
+			    		Reporter.failureReport("Reset password", "Failed with out any error message");
+			    	}
+			    }
 			   
 		}catch(Exception e){
 			e.printStackTrace();						
@@ -72,9 +81,8 @@ public class GmailHelper extends GmailLocators {
 			browser.findElement(locator).click();
 			Thread.sleep(1000);
 			flag = true;
-			System.out.println("ointialed browseron exktp																						");
+			System.out.println("clicked on browsers element "+locatorName);
 		} catch (Exception e) {
-			//Assert.assertTrue(flag,"Unable to click on "+ locatorName);
 			e.printStackTrace();
 		} finally {
 			if (!flag) {
@@ -106,8 +114,6 @@ public class GmailHelper extends GmailLocators {
 				Reporter.failureReport("Type ",
 						"Data typing action is not perform on " + locatorName
 								+ " with data is " + testdata);
-				Assert.assertTrue(flag,
-						"Unable to perform type action on the element "+ locatorName);
 			} else if (b && flag) {
 				Reporter.SuccessReport("Type ","Data typing action is performed on " + locatorName
 								+ " with data is " + testdata);
@@ -120,7 +126,7 @@ public class GmailHelper extends GmailLocators {
 		boolean flag = false;
 		try{
 			browser.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		if(browser.findElement(loc) != null);
+		if(browser.findElement(loc).isDisplayed());
 					flag = true;
 		} catch (Exception e) {
 			return false;
@@ -128,12 +134,30 @@ public class GmailHelper extends GmailLocators {
 		browser.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
 		return flag;
 	}
-	
-	public static boolean waitForElementPresent(WebDriver browser,By by, String locator)
+	public static boolean isElementDisplayed(WebDriver browser , By loc)
 			throws Throwable {
 		boolean flag = false;
 		try {
 				wait = new WebDriverWait(browser, 30);
+				WebElement  element =  null;
+					element = wait.until(ExpectedConditions.presenceOfElementLocated(loc));
+				    boolean enabled = element.getSize().getHeight()>0;
+				    if(enabled){ 
+				    	flag = true;
+				    }else {
+				    	browser.wait(50);
+					}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return flag;
+	}
+	public static boolean waitForElementPresent(WebDriver browser,By by, String locator)
+			throws Throwable {
+		boolean flag = false;
+		try {
+				wait = new WebDriverWait(browser, 70);
 				WebElement  element =  null;
 					element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
 				    boolean enabled = element.getSize().getHeight()>0;
@@ -143,7 +167,6 @@ public class GmailHelper extends GmailLocators {
 				    	browser.wait(50);
 					}
 		} catch (Exception e) {
-			//Assert.assertTrue(flag,"waitForElementPresent : Falied to locate element "+locator);
 			e.printStackTrace();
 			return false;
 		} finally {

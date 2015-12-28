@@ -1,16 +1,5 @@
 package com.androidMobile.scripts;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-
-import java.net.URL;
-import java.util.Set;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -18,7 +7,6 @@ import com.androidMobile.scripts.testObjects.AboutUsLocators;
 import com.androidMobile.scripts.testObjects.HomePageLocators;
 import com.androidMobile.workflows.LoginHelper;
 import com.ctaf.accelerators.TestEngine;
-import com.ctaf.support.ExcelReader;
 import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
 
@@ -54,8 +42,7 @@ public class RP_012_TestSocialLinksInAboutUs extends LoginHelper{
 				  }
 				  }*/
 				  Reporter.SuccessReport("Validate Facebook link in AboutUs page", "Successful");
-				  AndroidDriver2.closeApp();
-				  AndroidDriver2.launchApp();
+				  AndroidDriver2.resetApp();
 				  handleRateAppPopUp();
 				  Thread.sleep(6000);
 				  navigateToAboutUs();
@@ -70,8 +57,7 @@ public class RP_012_TestSocialLinksInAboutUs extends LoginHelper{
 				  handleSplashDialog();
 				  Thread.sleep(6000);	
 				  Reporter.SuccessReport("Validate twitter link in AboutUs page", "Successful");
-				  AndroidDriver2.closeApp();
-				  AndroidDriver2.launchApp();
+				  AndroidDriver2.resetApp();
 				  handleRateAppPopUp();
 				  Thread.sleep(6000);
 				  navigateToAboutUs();
@@ -85,8 +71,7 @@ public class RP_012_TestSocialLinksInAboutUs extends LoginHelper{
 				  handleSplashDialog();
 				  Thread.sleep(6000);	
 				  Reporter.SuccessReport("Validate GooglePlus link in AboutUs page", "Successful");
-				  AndroidDriver2.closeApp();
-				  AndroidDriver2.launchApp();
+				  AndroidDriver2.resetApp();
 				  handleRateAppPopUp();
 				  Thread.sleep(6000);
 				  navigateToAboutUs();
@@ -100,8 +85,7 @@ public class RP_012_TestSocialLinksInAboutUs extends LoginHelper{
 				  handleSplashDialog();
 				  Thread.sleep(6000);
 				  Reporter.SuccessReport("Validate Instagram link in AboutUs page", "Successful");
-				  AndroidDriver2.closeApp();
-				  AndroidDriver2.launchApp();
+				  AndroidDriver2.resetApp();
 				  handleRateAppPopUp();
 				  Thread.sleep(6000);
 				  navigateToAboutUs();
@@ -113,8 +97,7 @@ public class RP_012_TestSocialLinksInAboutUs extends LoginHelper{
 				  click(AboutUsLocators.pintrestImage,"pintrestImage");
 				  Thread.sleep(6000);
 				  Reporter.SuccessReport("Validate Pintrest link in AboutUs page", "Successful");
-				  AndroidDriver2.closeApp();
-				  AndroidDriver2.launchApp();
+				  AndroidDriver2.resetApp();
 				  handleRateAppPopUp();
 				  Thread.sleep(6000);
 				  navigateToAboutUs();
@@ -128,8 +111,7 @@ public class RP_012_TestSocialLinksInAboutUs extends LoginHelper{
 				  handleSplashDialog();
 				  Thread.sleep(6000);
 				  Reporter.SuccessReport("Validate Flipboard link in AboutUs page", "Successful");
-				  AndroidDriver2.closeApp();
-				  AndroidDriver2.launchApp();
+				  AndroidDriver2.resetApp();
 				  handleRateAppPopUp();
 				  Thread.sleep(6000);
 				  navigateToAboutUs();

@@ -15,7 +15,7 @@ import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
 
 public class RP_016_TestTabsLocalAttractions extends LoginHelper{
-	ExcelReader xlsTabs = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsTabs = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_016");
   @Test(dataProvider = "testData")
   public void testLocalAttractions(String country, String city, 
@@ -54,6 +54,9 @@ public class RP_016_TestTabsLocalAttractions extends LoginHelper{
 			navigateToMyAccount();
 			handleRateAppPopUp();
 			handleSplashDialog();
+			click(AccountPageLocators.logInButton, "logInButton");	
+			login(email, password);
+			logOut();
 			click(AccountPageLocators.logInButton, "logInButton");	
 			login(email, password);
 			navigateToHome();

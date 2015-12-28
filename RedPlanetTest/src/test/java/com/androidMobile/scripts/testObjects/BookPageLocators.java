@@ -14,9 +14,9 @@ public class BookPageLocators extends ActionEngine{
 			.xpath("//*[@resource-id='com.redplanethotels.staging:id/guestdatabynum_container']");
 	public static By guestRadioButton = By
 			.xpath("//*[@text='I have read and agree to the Terms and Conditions and Room Rates']");
-	public static By firstNameInput = By.xpath("//*[@text='First Name']");
-	public static By lastNameInput = By.xpath("//*[@text='Last Name']");
-	public static By EmailInput = By.xpath("//*[@text='Email']");
+	public static By firstNameInput = By.xpath("//*[contains(@text,'First Name')]");
+	public static By lastNameInput = By.xpath("//*[contains(@text,'Last Name')]");
+	public static By EmailInput = By.xpath("//*[contains(@text,'Email')]");
 	public static By cardHolderInput = By
 			.xpath("//*[@resource-id='com.redplanethotels.staging:id/payment_holder']");
 	public static By cardNumInput = By
@@ -24,7 +24,7 @@ public class BookPageLocators extends ActionEngine{
 	public static By expMonthInput = By
 			.xpath("//*[@resource-id='com.redplanethotels.staging:id/payment_exp_month_and_year']");
 	public static By cvvNumInput = By
-			.xpath("//*[@resource-id='com.redplanethotels.staging:id/payment_cvv']");
+			.xpath("//*[@resource-id='com.redplanethotels.staging:id/payment_cvc']");
 	public static By conditionsCheck = By
 			.xpath("//*[@resource-id='com.redplanethotels.staging:id/confirm_tac_cb']");
 	public static By bookedCity = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/confirmed_tv_hotel_name']");
@@ -32,7 +32,7 @@ public class BookPageLocators extends ActionEngine{
 	public static By bookingFromDate = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/dateview_tv_checkout_date']");
 	public static By bookedHotel = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/confirmed_tv_hotel_address']");
 	public static By totalBookingCost = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/total_amount']");
-	public static By bookButton = By.xpath("//*[@text='Book']");
+	public static By bookButton = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/confirm_btn_book']");
 	public static By errorPayment = By.xpath("//*[@resource-id='android:id/message']");
 	public static By okButton = By.xpath("//*[@text='OKAY']");
 	public static By iAMTheGuestRadio = By.xpath("//*[@text='I am the guest']");

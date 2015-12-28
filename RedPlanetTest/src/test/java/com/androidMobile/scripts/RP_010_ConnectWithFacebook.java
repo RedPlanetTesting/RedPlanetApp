@@ -7,7 +7,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.androidMobile.scripts.testObjects.AccountPageLocators;
-import com.androidMobile.scripts.testObjects.LoginPageLocators;
 import com.androidMobile.workflows.LoginHelper;
 import com.ctaf.accelerators.TestEngine;
 import com.ctaf.support.ExcelReader;
@@ -20,7 +19,7 @@ public class RP_010_ConnectWithFacebook extends LoginHelper{
 		/*
 		 * Verify Login functionality
 		 */
-	ExcelReader xlsFBLogin = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsFBLogin = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_010");
 		@Test(dataProvider = "testData")
 		public  void validateConnectWithFacebook(String FBemail, String FBpassword, String description

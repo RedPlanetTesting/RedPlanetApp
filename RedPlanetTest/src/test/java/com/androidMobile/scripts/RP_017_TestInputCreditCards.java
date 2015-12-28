@@ -14,7 +14,7 @@ import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
 
 public class RP_017_TestInputCreditCards extends LoginHelper{
-	ExcelReader xlsCards = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsCards = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_017");
   @Test(dataProvider = "testData")
   public void testInputCreditCards(String country, String city,

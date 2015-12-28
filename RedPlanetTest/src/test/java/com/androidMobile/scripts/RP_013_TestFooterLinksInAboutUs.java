@@ -1,14 +1,10 @@
 package com.androidMobile.scripts;
 
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.androidMobile.scripts.testObjects.AboutUsLocators;
-import com.androidMobile.scripts.testObjects.HomePageLocators;
-import com.androidMobile.workflows.HomePageHelper;
 import com.androidMobile.workflows.LoginHelper;
 import com.ctaf.accelerators.TestEngine;
-import com.ctaf.support.ExcelReader;
 import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
 

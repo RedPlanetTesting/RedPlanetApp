@@ -45,11 +45,15 @@ public class LoginHelper extends HomePageHelper {
 			try {
 				waitForElementPresent(LoginPageLocators.emailFieldForLogin,
 						"emailField");
+				if(email.length()>0){
 				type(LoginPageLocators.emailFieldForLogin, email, "emailField");
+				}
 				waitForElementPresent(LoginPageLocators.passwordFieldForLogin,
 						"passwordFieldForLogin");
+				if(password.length()>0){
 				type(LoginPageLocators.passwordFieldForLogin, password,
 						"passwordFieldForLogin");
+				}
 				waitForElementPresent(LoginPageLocators.signInButton,
 						"signInButton");
 				click(LoginPageLocators.signInButton, "signInButton");

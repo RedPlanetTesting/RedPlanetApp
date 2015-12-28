@@ -36,8 +36,6 @@ public class HomePageHelper extends HomePageLocators {
 	
 	public static void handleRateAppPopUp() throws Throwable{
 		try {
-			
-			//driver.findElement(loc).isDisplayed()
 			if(isElementDisplayedTemp(HomePageLocators.rateAppPopUp)){
 				click(HomePageLocators.closeRateAppPopUp,"CloseRateAppPopUp");
 			}

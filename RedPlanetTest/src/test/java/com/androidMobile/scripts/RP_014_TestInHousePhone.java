@@ -1,7 +1,5 @@
 package com.androidMobile.scripts;
 
-import io.appium.java_client.ios.IOSDriver;
-
 import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,10 +12,9 @@ import com.ctaf.accelerators.TestEngine;
 import com.ctaf.support.ExcelReader;
 import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
-import com.sun.javafx.iio.ios.IosDescriptor;
 
 public class RP_014_TestInHousePhone  extends LoginHelper{
-	ExcelReader xlsInHouse = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsInHouse = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_014");
 		@Test(dataProvider = "testData")
   public void testInHousePhone(String dialNumber,
@@ -42,6 +39,8 @@ public class RP_014_TestInHousePhone  extends LoginHelper{
 		  handleRateAppPopUp();
 		  Thread.sleep(2000);
 		  if(status){
+			  int count = 0;
+			  while(count>=3){
 			  System.out.println("Dial Number "+phNo+" no of digits "+phNo.length);
 				 for(char digi : phNo){
 				  waitForElementPresent(By.xpath(InHousePhoneLocators.noButtonToDial.replace("#", Character.toString(digi))),
@@ -49,10 +48,9 @@ public class RP_014_TestInHousePhone  extends LoginHelper{
 				  click(By.xpath(InHousePhoneLocators.noButtonToDial.replace("#", Character.toString(digi))),
 						  "noButtonToDial"+digi);
 				 }
-				  int count=0;
-			  while(click(InHousePhoneLocators.callIcon, "callIcon")){
-			  if(isElementDisplayed(InHousePhoneLocators.rigingLabel)|
-					  (isElementDisplayed(InHousePhoneLocators.busyLabel))){
+				  waitForElementPresent(InHousePhoneLocators.callIcon, "callIcon");
+				  click(InHousePhoneLocators.callIcon, "callIcon");
+				 if(isElementDisplayed(InHousePhoneLocators.callingRoomLabel)){
 				  Reporter.SuccessReport(description, " Successful");	
 				  break;
 			  }else{
@@ -64,34 +62,35 @@ public class RP_014_TestInHousePhone  extends LoginHelper{
 					  System.out.println("successfully failed to call Invalid room");
 				  }
 			  }
-				  if(count == 5){
+				  if(count == 3){
 					  Reporter.failureReport(description, " Failed");
 					  break;
 				  }
-		  } count++;
-		  AndroidDriver2.navigate().back();
-		  Thread.sleep(2000);
+				  count++;
+				  AndroidDriver2.navigate().back();
 			  }
+			 }
 		}else if(description.contains("FrontDesk")){
 				  System.out.println("In call Front Desk block");
 				  int count=0;
-				  while(click(InHousePhoneLocators.frontDeskButtonToCall, "frontDeskButtonToCall")){
-				  //handleRateAppPopUp();
-				  if((isElementDisplayed(InHousePhoneLocators.rigingLabel))|
-						  (isElementDisplayed(InHousePhoneLocators.busyLabel))){
+				  while(count>=3){
+					  waitForElementPresent(InHousePhoneLocators.frontDeskButtonToCall, "frontDeskButtonToCall");
+					  click(InHousePhoneLocators.frontDeskButtonToCall, "frontDeskButtonToCall");
+					  if((isElementDisplayed(InHousePhoneLocators.callingRoomLabel))){
 					  Reporter.SuccessReport(description, " Successful");
 					 
 					  System.out.println("successfully calling Front Desk ");
 					  break;
 				  }else{
-					  if(count == 5){
+					  if(count == 3){
+						  Reporter.failureReport(description, " Failed");
 						  break;
 					  }
-					  Reporter.failureReport(description, " Failed");
+					  count++;
+					  AndroidDriver2.navigate().back();
+					  Thread.sleep(2000);
 				  }
-				  count++;
-				  AndroidDriver2.navigate().back();
-				  Thread.sleep(2000);
+				
 				  }
 			  }
 	  }catch (Exception e) {

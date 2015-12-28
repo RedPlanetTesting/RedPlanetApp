@@ -41,6 +41,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -82,7 +83,6 @@ public class ActionEngine extends TestEngine {
 		boolean flag = false;
 		try {
 			driver.findElement(locator).click();
-			Thread.sleep(1000);
 			flag = true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -161,16 +161,51 @@ public class ActionEngine extends TestEngine {
 			}
 		}*/
 	}
-	public static boolean scrollToElement(final String locator)
+	public static boolean scrollToElement(By locator)
 			throws Throwable {
 		boolean flag = false;
 		try {
-			System.out.println("scrolling to element : "+ locator);
-			JavascriptExecutor executor = (JavascriptExecutor) driver;
-			executor.executeScript("mobile: scrollTo", new HashMap<String, String>() {{ put("element", 
-					((RemoteWebElement) driver.findElement(By.xpath(locator))).getId()); }});
-			flag = true;
-			return true;
+			if(!(isElementDisplayedTemp(locator))){
+	                try
+	                {
+	                	for(int i=1;;i=i+1){
+	                		WebElement we1 = driver.findElement(By.xpath("//*[1]"));
+	                		List<WebElement> wes = driver.findElements(By.xpath("//*")); 
+                			System.out.println(wes.size()-1);
+	                		if((i>1)){
+	                			if(!(we1.equals(wes.get(wes.size()-1)))){
+	                			Point pt = wes.get(1).getLocation();
+	                			if(browser.toLowerCase().contains("android")){
+	                			AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 1000);
+	                			}else {
+	                				Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 1000);
+	                			}
+		                		we1 = wes.get(wes.size()-1);
+	                			}
+	                		}else{
+	                			try{
+	                				Point pt = wes.get(1).getLocation();
+	                				if(browser.toLowerCase().contains("android")){
+	                					AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 5000);
+	                				}else{
+	                					Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 5000);
+	                				}
+	                			}catch(Exception e1){
+	                				//e1.printStackTrace();
+	                			}
+	                		}
+	                	System.out.println("scrolling..");
+	                		if((isElementDisplayedTemp(locator))){
+	                			flag = true;
+	                			break;
+	                		}
+	                	}
+	                }catch (Exception e)
+	                {
+	                  e.printStackTrace();
+	                }
+			}
+			return flag;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -294,6 +329,13 @@ public class ActionEngine extends TestEngine {
 			act.sendKeys(driver.findElement(locator), testdata).build().perform();*/
 			we.sendKeys(testdata);
 			flag = true;
+			if(browser.toLowerCase().contains("android")){
+				try{
+					(AndroidDriver2).hideKeyboard();
+				}catch(Exception e){
+					
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();   
@@ -448,7 +490,6 @@ public class ActionEngine extends TestEngine {
 			// new Actions(driver).dragAndDropBy(dragitem, 400, 1).build()
 			// .perform();
 			new Actions(driver).dragAndDropBy(dragitem, x, y).build().perform();// 150,0
-			Thread.sleep(5000);
 			flag = true;
 			return true;
 		} catch (Exception e) {
@@ -755,13 +796,11 @@ public class ActionEngine extends TestEngine {
 			WebElement ListBox = driver.findElement(locator);
 			List<WebElement> options = ListBox.findElements(By.tagName("option"));
 			for(WebElement option : options){
-				Thread.sleep(1000);
 				String opt = option.getText().trim();
 				//System.out.println("optionsM  "+opt);
 				if(opt.equalsIgnoreCase(value.trim())){
 					flag = true;
 					option.click();
-					Thread.sleep(1000);
 					break;
 				}
 			}
@@ -2092,18 +2131,7 @@ public class ActionEngine extends TestEngine {
 			expectedAttrubuteValue, String locator) throws Throwable {
 				boolean flag = false;
 		try {
-			/*WebElement[]  element =  new WebElement[300];
-			for(int i = 0; i < 300; i++){
-				element[i] = driver.findElement(by);
-			    String enabled = element[i].getAttribute(attributeName);
-			    if(enabled.equalsIgnoreCase(expectedAttrubuteValue)){ 
-			    	flag = true;
-			    	break; 
-			    }else {
-			    	 Thread.sleep(1000);
-			    	//driver.wait(50);
-				}
-			 }*/
+			
 			wait = new WebDriverWait(driver, 180);
 			flag = wait.until(new ExpectedCondition<Boolean>() {
 				public Boolean apply(WebDriver arg0) {

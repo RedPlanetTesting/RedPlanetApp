@@ -16,7 +16,7 @@ import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
 
 public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
-	ExcelReader xlsChatFrontDesk = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsChatFrontDesk = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_015");
 		@Test(dataProvider = "testData")
   public void testChatWithFrontDesk(String email,String password,String chatName,String chatAdminEmail, 
@@ -39,8 +39,13 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 		  //handelWelcomeDashboardDialog();
 		  waitForElementPresent(HomePageLocators.chatWithFrontDeskButton, "chatWithFrontDeskButton");
 		  click(HomePageLocators.chatWithFrontDeskButton, "chatWithFrontDeskButton");
-		  Thread.sleep(2000);
-			  waitForElementPresent(InHousePhoneLocators.textAreaForChat, "textAreaForChat");
+			if(isElementDisplayed(InHousePhoneLocators.textAreaForChat2)) {
+				  click(InHousePhoneLocators.textAreaForChat2, "textAreaForChat2");
+				  type(InHousePhoneLocators.textAreaForChat2, testMessage, "textAreaForChat2");
+				  waitForElementPresent(InHousePhoneLocators.sendButtonForChat2, "sendButtonForChat2");
+				  click(InHousePhoneLocators.sendButtonForChat2, "sendButtonForChat2");
+			}else{
+				waitForElementPresent(InHousePhoneLocators.textAreaForChat, "textAreaForChat");
 			  click(InHousePhoneLocators.textAreaForChat, "textInputField");
 			  type(InHousePhoneLocators.textAreaForChat, testMessage, "textInputField");
 			  waitForElementPresent(InHousePhoneLocators.textAreaForChat, "textAreaForChat");
@@ -48,8 +53,12 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 			  click(InHousePhoneLocators.ChatNameInput, "ChatNameInput");
 			  type(InHousePhoneLocators.ChatNameInput, chatName, "ChatNameInput");
 			  click(InHousePhoneLocators.sendButtonForChat, "sendButtonForChat");
+			}
 			  String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage);
 			  if(replyMsg!= null){
+				  if(isElementDisplayed(HomePageLocators.chatWithFrontDeskButton)){
+					  click(HomePageLocators.chatWithFrontDeskButton, "chatWithFrontDeskButton");
+				  }
 				  res = AndroidDriver2.getPageSource().contains(replyMsg);
 			  	}
 				  System.out.println("resutl "+res);

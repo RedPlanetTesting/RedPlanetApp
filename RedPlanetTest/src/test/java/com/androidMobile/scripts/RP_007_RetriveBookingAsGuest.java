@@ -18,7 +18,7 @@ import com.ctaf.utilities.Reporter;
 
 
 public class RP_007_RetriveBookingAsGuest extends LoginHelper{
-	ExcelReader xlsRetrive = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsRetrive = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_007");
   @Test(dataProvider = "testData")
   public void testRetriveBookingAsGuest(String country, String city,String fName,String lName,String email,String cardHolder,

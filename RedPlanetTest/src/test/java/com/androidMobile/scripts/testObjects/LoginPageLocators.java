@@ -18,13 +18,13 @@ public class LoginPageLocators extends ActionEngine {
 	public static By forgotPasswordLink = By
 			.xpath("//*[contains(@resource-id,'signin_btn_forgotpassword')]");
 	public static By forgotPasswordframe = By
-			.xpath("//*[contains(@resource-id,'android:id/alertTitle')]");
+			.xpath("//*[contains(@text,'FORGOT PASSWORD')]");
 	public static By emailFieldForForgotPswd = By
-			.xpath("//*[contains(@text,'Email Address')]");
+			.xpath("//*[contains(@resource-id,'com.redplanethotels.staging:id/forgotpassword_bt_email')]");
 	public static By cancelButton = By
 			.xpath("//*[@text='CANCEL']");
 	public static By resetButton = By
-			.xpath("//*[@text='RESET']");
+			.xpath("//*[contains(@resource-id,'com.redplanethotels.staging:id/forgotpassword_bt_reset')]");
 	public static By errorPop = By
 			.xpath("//*[contains(@text,'Error:')]");
 	public static By okayButtonOnErrorpop = By

@@ -15,7 +15,7 @@ import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
 
 public class RP_005_TestGuestBookingFromBookNow extends LoginHelper{
-	ExcelReader xlsSearch = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsSearch = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_005");
   @Test(dataProvider = "testData")
   public void testGuestBookingFromBookNow(String country, String city, String fName,String lName,String email,
@@ -81,10 +81,7 @@ public class RP_005_TestGuestBookingFromBookNow extends LoginHelper{
   		return (Object[][]) new Object[][] { 
 			 
   				{xlsSearch.getCellValue("country", "Value"),xlsSearch.getCellValue("city", "Value"),
-					  xlsSearch.getCellValue("fName", "Value"),xlsSearch.getCellValue("lName", "Value"),
-					  xlsSearch.getCellValue("email", "Value"),"",
-					  "",xlsSearch.getCellValue("expirationmonth", "Value"),
-					  xlsSearch.getCellValue("cvv", "Value"),
+					  "","","","","","","",
 					  "Validate booking of a Hotel as Guest from Booking screen with blank details"},
 				{xlsSearch.getCellValue("country", "Value"),xlsSearch.getCellValue("city", "Value"),
 							xlsSearch.getCellValue("fName", "Value"),xlsSearch.getCellValue("lName", "Value"),

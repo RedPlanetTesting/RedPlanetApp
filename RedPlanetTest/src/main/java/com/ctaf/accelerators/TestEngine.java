@@ -33,6 +33,7 @@ import com.ctaf.support.ReportStampSupport;
 import com.ctaf.utilities.Reporter;
 //import com.redplanet.utils.RedPlanetUtils;
 //import com.redplanet.utils.RedPlanetUtils;
+import com.redplanet.utils.RedPlanetUtils;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -189,9 +190,9 @@ public class TestEngine extends HtmlReportSupport {
 				capabilitiesForAppium.setCapability("platformVersion",platformVer);
 				capabilitiesForAppium.setCapability("deviceName",device);
 				capabilitiesForAppium.setCapability("bundleId", bundleID);
-				capabilitiesForAppium.setCapability("newCommandTimeout","6000");
+				capabilitiesForAppium.setCapability("newCommandTimeout","8000");
 				capabilitiesForAppium.setCapability("takesScreenshot", true);
-				capabilitiesForAppium.setCapability("autoWebviewTimeout","6000");
+				capabilitiesForAppium.setCapability("autoWebviewTimeout","8000");
 				capabilitiesForAppium.setCapability("locationServicesAuthorized", true);
 				//capabilitiesForAppium.setCapability("autoLaunch", true);
 				//capabilitiesForAppium.setCapability("fullReset", false);
@@ -212,27 +213,35 @@ public class TestEngine extends HtmlReportSupport {
 				Iosdriver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 						capabilitiesForAppium);
 				driver = Iosdriver;
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
 		}else if (browser.equalsIgnoreCase("Android")) {
 			try {
-				System.out.println("In Android block");
 				String AppPackage = configProps.getProperty("appPackage");
 				String AppActivity = configProps.getProperty("appActivity");
 				String OSVersion =  configProps.getProperty("OSVersion");
 				// ---------------------------------------------------
-				
+				System.out.println("Starting Appium Server....");
+				String logFile = "C:/Log/RPMob_" + timeStamp + ".log";
+				if(configProps.getProperty("AutoStart").equals("true")){
+					while (!(new File(logFile).exists())) {
+						RedPlanetUtils.startAppium(logFile);
+					}
+					if ((new File(logFile).exists())) {
+						Reporter.SuccessReport("StartAppiumServer",
+							"Successfully started Appium Server");
+					}
+				}
 				// -----------------------------------------------------
 				DesiredCapabilities capabilitiesForAppium = new DesiredCapabilities();
 				System.out.println("DeviceName is : " + DeviceName);
-				capabilitiesForAppium.setCapability("deviceName",
-						DeviceName);
+				capabilitiesForAppium.setCapability("deviceName",DeviceName);
 				capabilitiesForAppium.setCapability("platformVersion",OSVersion);
 				capabilitiesForAppium.setCapability("platformName","Android");
-				//capabilitiesForAppium.setCapability("newCommandTimeout","120000");
+				capabilitiesForAppium.setCapability("newCommandTimeout","120000");
 				//capabilitiesForAppium.setCapability("autoWebview", "true");
 				capabilitiesForAppium.setCapability("autoWebviewTimeout","1000");
 				//capabilitiesForAppium.setCapability("noReset", false);
@@ -241,13 +250,14 @@ public class TestEngine extends HtmlReportSupport {
 				
 				AndroidDriver2 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 						capabilitiesForAppium);
-				AndroidDriver2.resetApp();
 				driver = (AndroidDriver2);
-				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
+			
 			}
+
 		}
 	}
 
@@ -393,13 +403,8 @@ public class TestEngine extends HtmlReportSupport {
 				webDriver = new ChromeDriver(capabilities);
 			}else if(browser.equalsIgnoreCase("iphone")){
 				Iosdriver.resetApp();
-
-				
 			}else if (browser.equalsIgnoreCase("Android")) {
-				try {
-				} catch (Exception e) {
-					//e.printStackTrace();
-				}
+					AndroidDriver2.resetApp();
 			}
 		flag = false;
 		if((!(browser.equalsIgnoreCase("Android")))&(!(browser.equalsIgnoreCase("iPhone")))){

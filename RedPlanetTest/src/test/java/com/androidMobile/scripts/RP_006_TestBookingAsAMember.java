@@ -16,10 +16,10 @@ import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
 
 public class RP_006_TestBookingAsAMember extends LoginHelper{
-	ExcelReader xlsBook = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsBook = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_006");
   @Test(dataProvider = "testData")
-  public void testGuestBookingAsAMember(String userId, String password, 
+  public void testBookingAsAMember(String userId, String password, 
 		  String country, String city, String fName,String lName,String email,
 		  String cardHolder,String cardNum,String expMonth,String cvv,boolean status,String description) throws Throwable{
 	  String bookingCode = null;
@@ -126,9 +126,7 @@ public class RP_006_TestBookingAsAMember extends LoginHelper{
 			 
   			{xlsBook.getCellValue("ValidUser", "Value"),xlsBook.getCellValue("ValidUser", "password"),
 					xlsBook.getCellValue("country", "Value"),xlsBook.getCellValue("city", "Value"),
-					xlsBook.getCellValue("fName", "Value"),xlsBook.getCellValue("lName", "Value"),
-					 xlsBook.getCellValue("email", "Value"),"",
-					"",xlsBook.getCellValue("expirationmonth", "Value"),  xlsBook.getCellValue("cvv", "Value"),
+					"","", "","","","","",
 				false,"Validate booking of a Hotel as Member from Booking screen with blank details"},	
 			{xlsBook.getCellValue("ValidUser", "Value"),xlsBook.getCellValue("ValidUser", "password"),
 				  xlsBook.getCellValue("country", "Value"),xlsBook.getCellValue("city", "Value"),

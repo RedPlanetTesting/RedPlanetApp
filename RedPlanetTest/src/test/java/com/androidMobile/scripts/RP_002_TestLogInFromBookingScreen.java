@@ -14,7 +14,7 @@ import com.ctaf.utilities.Reporter;
 
 public class RP_002_TestLogInFromBookingScreen  extends LoginHelper{
 	
-	ExcelReader xlsLogin = new ExcelReader(configProps.getProperty("TestData"),
+	ExcelReader xlsLogin = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_002");
 		@Test(dataProvider = "testData")
   public void testLogInFromBookingScreen(String country,String city,
