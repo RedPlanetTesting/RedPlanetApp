@@ -56,9 +56,6 @@ public class RP_016_TestTabsLocalAttractions extends LoginHelper{
 			handleSplashDialog();
 			click(AccountPageLocators.logInButton, "logInButton");	
 			login(email, password);
-			logOut();
-			click(AccountPageLocators.logInButton, "logInButton");	
-			login(email, password);
 			navigateToHome();
 			handleRateAppPopUp();
 			handleSplashDialog();
