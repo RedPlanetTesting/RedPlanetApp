@@ -114,7 +114,7 @@ public class TestEngine extends HtmlReportSupport {
 				browser = xlsrdr.getCellValue("ie_browser", "value");
 			}else if (groupNames.contains("Android")) {
 				logger.info("Android");
-				browser = "Android";
+				browser = "android";
 			}
 			else if (groupNames.contains("Mobile")) {
 				logger.info("iPhone");
@@ -333,7 +333,7 @@ public class TestEngine extends HtmlReportSupport {
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				return "Firefox";
 
-			}  else if (browser.equalsIgnoreCase("Android")) {
+			}  else if (browser.equalsIgnoreCase("android")) {
 				return "Android";
 
 			}else if (browser.equalsIgnoreCase("iPhone")) {
@@ -437,9 +437,11 @@ public class TestEngine extends HtmlReportSupport {
 		}catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			if ((browser.toLowerCase().contains("iphone"))|
-					(browser.toLowerCase().contains("android"))) {
+			if ((browser.toLowerCase().contains("iphone"))) {
 				Iosdriver.closeApp();
+			}
+			}else if(browser.toLowerCase().contains("android")){ 
+				//AndroidDriver2.closeApp();
 			}else{
 				driver.quit();
 			}
