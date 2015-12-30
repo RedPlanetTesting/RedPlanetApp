@@ -439,7 +439,6 @@ public class TestEngine extends HtmlReportSupport {
 		} finally {
 			if ((browser.toLowerCase().contains("iphone"))) {
 				Iosdriver.closeApp();
-			}
 			}else if(browser.toLowerCase().contains("android")){ 
 				//AndroidDriver2.closeApp();
 			}else{
