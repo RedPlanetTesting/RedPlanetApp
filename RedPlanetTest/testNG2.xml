@@ -4,7 +4,11 @@
 
 	<test name="Grouping" preserve-order="true">
 	
-
+		<groups>
+				<run>
+					<include name="Android"/>
+				</run>
+			</groups>
 		<classes>			
 		
 			<class name="com.androidMobile.scripts.RP_001_TestLoginFromMyAccount" />

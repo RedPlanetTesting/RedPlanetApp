@@ -21,7 +21,7 @@ public class RP_010_ConnectWithFacebook extends LoginHelper{
 		 */
 	ExcelReader xlsFBLogin = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_010");
-		@Test(dataProvider = "testData")
+		@Test(dataProvider = "testData",groups={"Android"})
 		public  void validateConnectWithFacebook(String FBemail, String FBpassword, String description
 				) throws Throwable {
 			logger.info("username "+FBemail);

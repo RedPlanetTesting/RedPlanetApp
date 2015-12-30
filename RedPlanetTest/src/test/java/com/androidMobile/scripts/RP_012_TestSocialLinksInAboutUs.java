@@ -12,7 +12,7 @@ import com.ctaf.utilities.Reporter;
 
 public class RP_012_TestSocialLinksInAboutUs extends LoginHelper{
 
-  @Test
+  @Test(groups={"Android"})
   public void testSocialNetworkLinksInAboutUs() throws Throwable{
 	 try{		  
 		  TestEngine.testDescription.put(HtmlReportSupport.tc_name, 

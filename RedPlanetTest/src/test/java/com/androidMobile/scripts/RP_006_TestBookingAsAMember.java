@@ -18,7 +18,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_006_TestBookingAsAMember extends LoginHelper{
 	ExcelReader xlsBook = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_006");
-  @Test(dataProvider = "testData")
+  @Test(dataProvider = "testData",groups={"Android"})
   public void testBookingAsAMember(String userId, String password, 
 		  String country, String city, String fName,String lName,String email,
 		  String cardHolder,String cardNum,String expMonth,String cvv,boolean status,String description) throws Throwable{

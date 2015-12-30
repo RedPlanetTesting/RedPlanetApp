@@ -17,7 +17,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_005_TestGuestBookingFromBookNow extends LoginHelper{
 	ExcelReader xlsSearch = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_005");
-  @Test(dataProvider = "testData")
+  @Test(dataProvider = "testData",groups={"Android"})
   public void testGuestBookingFromBookNow(String country, String city, String fName,String lName,String email,
 		  String cardHolder,String cardNum,String expMonth,String cvv,String description) throws Throwable{
 	  String bookingCode = null;

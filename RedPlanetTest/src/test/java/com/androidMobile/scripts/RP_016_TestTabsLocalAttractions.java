@@ -17,7 +17,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_016_TestTabsLocalAttractions extends LoginHelper{
 	ExcelReader xlsTabs = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_016");
-  @Test(dataProvider = "testData")
+  @Test(dataProvider = "testData",groups={"Android"})
   public void testLocalAttractions(String country, String city, 
 		  String email, String password,String description) 
 		  throws Throwable{

@@ -16,7 +16,7 @@ public class RP_001_TestLoginFromMyAccount extends LoginHelper{
 		 * Verify Login functionality from My Account screen
 		 */
 	ExcelReader xlsLogin = new ExcelReader(configProps.getProperty("TestDataForAndroid"),"RP_ANDR_001");
-		@Test(dataProvider = "testData")
+		@Test(dataProvider = "testData",groups={"Android"})
 		public  void testTestLoginFromMyAccount (String email, String password, String description, 
 				boolean res) throws Throwable {
 			try{

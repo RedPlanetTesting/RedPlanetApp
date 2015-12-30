@@ -18,7 +18,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_009_TestSignUpUser extends LoginHelper{
 	ExcelReader xlsSearch = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_009");
-  @Test(dataProvider = "testData")
+  @Test(dataProvider = "testData",groups={"Android"})
   public void testSignUpUser(String fName, String lName, String email,
 		  String password,String description) throws Throwable{
 	 

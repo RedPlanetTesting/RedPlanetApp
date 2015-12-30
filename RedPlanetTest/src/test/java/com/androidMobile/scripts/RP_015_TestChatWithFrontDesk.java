@@ -18,7 +18,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 	ExcelReader xlsChatFrontDesk = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_015");
-		@Test(dataProvider = "testData")
+		@Test(dataProvider = "testData",groups={"Android"})
   public void testChatWithFrontDesk(String email,String password,String chatName,String chatAdminEmail, 
 		 String chatAdminPassword, String description) throws Throwable {
 			Calendar cal = Calendar.getInstance();

@@ -18,7 +18,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_011_Forgot_Password extends LoginHelper{
 	ExcelReader xlsPsw = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_011");
-  @Test(dataProvider = "testData")
+  @Test(dataProvider = "testData",groups={"Android"})
   public void ResetPassword(String email, String password,String resetPwd,String description) throws Throwable{
 	  System.out.println("In ResetPassword");
 	 String gmailUrl = "https://www.gmail.com" ;

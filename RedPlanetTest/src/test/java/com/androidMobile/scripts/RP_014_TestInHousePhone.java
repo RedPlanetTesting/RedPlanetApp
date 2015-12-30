@@ -16,7 +16,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_014_TestInHousePhone  extends LoginHelper{
 	ExcelReader xlsInHouse = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_014");
-		@Test(dataProvider = "testData")
+		@Test(dataProvider = "testData",groups={"Android"})
   public void testInHousePhone(String dialNumber,
 		  String email,String password,boolean status, String description) throws Throwable {
 	  try{

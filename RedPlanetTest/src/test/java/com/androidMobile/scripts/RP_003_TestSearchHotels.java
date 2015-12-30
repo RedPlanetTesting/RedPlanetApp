@@ -15,7 +15,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_003_TestSearchHotels extends LoginHelper{
 	ExcelReader xlsSearch = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_003");
-  @Test(dataProvider = "testData")
+  @Test(dataProvider = "testData",groups={"Android"})
   public void testSearchHotels(String country, String city,String description) throws Throwable{
 	try{
 		 TestEngine.testDescription.put(HtmlReportSupport.tc_name, 

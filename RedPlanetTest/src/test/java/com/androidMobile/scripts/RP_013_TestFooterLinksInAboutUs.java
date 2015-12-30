@@ -10,7 +10,7 @@ import com.ctaf.utilities.Reporter;
 
 public class RP_013_TestFooterLinksInAboutUs extends LoginHelper{
 
-  @Test
+  @Test(groups={"Android"})
   public void testFooterLinksInAboutUs() throws Throwable{
 	 try{		  
 		  TestEngine.testDescription.put(HtmlReportSupport.tc_name, 

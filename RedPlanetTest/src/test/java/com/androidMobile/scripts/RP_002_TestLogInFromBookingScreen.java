@@ -16,7 +16,7 @@ public class RP_002_TestLogInFromBookingScreen  extends LoginHelper{
 	
 	ExcelReader xlsLogin = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_002");
-		@Test(dataProvider = "testData")
+		@Test(dataProvider = "testData",groups={"Android"})
   public void testLogInFromBookingScreen(String country,String city,
 		  String email,String password,String description) throws Throwable {
 	  try{

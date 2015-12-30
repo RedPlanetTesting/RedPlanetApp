@@ -16,7 +16,7 @@ import com.ctaf.utilities.Reporter;
 public class RP_017_TestInputCreditCards extends LoginHelper{
 	ExcelReader xlsCards = new ExcelReader(configProps.getProperty("TestDataForAndroid"),
 			"RP_ANDR_017");
-  @Test(dataProvider = "testData")
+  @Test(dataProvider = "testData",groups={"Android"})
   public void testInputCreditCards(String country, String city,
 		 String fName,String lName,String email,
 		 String cardHolder,String cardNum,String expMonthYear, String cvv
