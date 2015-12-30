@@ -11,9 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Match;
-import org.sikuli.script.Screen;
+//import org.sikuli.script.FindFailed;
+//import org.sikuli.script.Match;
+//import org.sikuli.script.Screen;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
