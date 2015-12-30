@@ -393,7 +393,7 @@ public class TestEngine extends HtmlReportSupport {
 				webDriver = new ChromeDriver(capabilities);
 			}else if(browser.equalsIgnoreCase("iphone")){
 				Iosdriver.resetApp();
-			}else if (browser.equalsIgnoreCase("Android")) {
+			}else if (browser.equalsIgnoreCase("android")) {
 					AndroidDriver2.resetApp();
 			}
 		flag = false;
