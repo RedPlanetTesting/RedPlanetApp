@@ -224,17 +224,7 @@ public class TestEngine extends HtmlReportSupport {
 				String AppActivity = configProps.getProperty("appActivity");
 				String OSVersion =  configProps.getProperty("OSVersion");
 				// ---------------------------------------------------
-				System.out.println("Starting Appium Server....");
-				String logFile = "C:/Log/RPMob_" + timeStamp + ".log";
-				if(configProps.getProperty("AutoStart").equals("true")){
-					while (!(new File(logFile).exists())) {
-						RedPlanetUtils.startAppium(logFile);
-					}
-					if ((new File(logFile).exists())) {
-						Reporter.SuccessReport("StartAppiumServer",
-							"Successfully started Appium Server");
-					}
-				}
+				
 				// -----------------------------------------------------
 				DesiredCapabilities capabilitiesForAppium = new DesiredCapabilities();
 				System.out.println("DeviceName is : " + DeviceName);
@@ -450,7 +440,6 @@ public class TestEngine extends HtmlReportSupport {
 			if ((browser.toLowerCase().contains("iphone"))|
 					(browser.toLowerCase().contains("android"))) {
 				Iosdriver.closeApp();
-				//RedPlanetUtils.stopAppiumForIos();
 			}else{
 				driver.quit();
 			}
