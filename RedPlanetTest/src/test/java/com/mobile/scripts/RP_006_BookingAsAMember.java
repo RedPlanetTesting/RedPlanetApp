@@ -75,7 +75,7 @@ public class RP_006_BookingAsAMember extends LoginHelper{
 				 waitForElementPresent(AccountPageLocators.upcomingBookings, "upcomingBookings");
 				 Thread.sleep(10000);
 				 if((scrollToText(city))){
-					 String cost = (totalBookingCost.split("[(]"))[0].trim();
+					 String cost = totalBookingCost.trim();
 					 System.out.println(" Total Booking Cost is: "+cost);
 					 if((scrollToText(cost))){
 				 Reporter.SuccessReport("Validate Booking details under My Account Screen ",
