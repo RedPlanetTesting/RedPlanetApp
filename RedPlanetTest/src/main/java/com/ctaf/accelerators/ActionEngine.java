@@ -186,9 +186,9 @@ public class ActionEngine extends TestEngine {
 	                			try{
 	                				Point pt = wes.get(1).getLocation();
 	                				if(browser.toLowerCase().contains("android")){
-	                					AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 5000);
+	                					AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
 	                				}else{
-	                					Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 5000);
+	                					Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
 	                				}
 	                			}catch(Exception e1){
 	                				//e1.printStackTrace();
@@ -196,6 +196,7 @@ public class ActionEngine extends TestEngine {
 	                		}
 	                	System.out.println("scrolling..");
 	                		if((isElementDisplayedTemp(locator))){
+	                			Thread.sleep(1000);
 	                			flag = true;
 	                			break;
 	                		}
