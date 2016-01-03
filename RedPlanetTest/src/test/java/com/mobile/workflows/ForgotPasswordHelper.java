@@ -70,7 +70,7 @@ public class ForgotPasswordHelper extends GmailLocators {
 			    waitForElementPresent(browser,GmailLocators.resetPassworddInputField, "resetPassworddInputField");
 			    type(browser, GmailLocators.resetPassworddInputField, resetPwd, "resetPwdInput");
 			    click(browser, GmailLocators.submitButton, "submitButton");
-			    Thread.sleep(5000);
+			    Thread.sleep(8000);
 			    if(browser.findElement(GmailLocators.successText).getText().equals("Your password has been changed.")){
 			    	Reporter.SuccessReport("Reset password", "Successful");
 			    }else
@@ -140,7 +140,7 @@ public class ForgotPasswordHelper extends GmailLocators {
 			throws Throwable {
 		boolean flag = false;
 		try {
-				wait = new WebDriverWait(browser, 30);
+				wait = new WebDriverWait(browser, 90);
 				WebElement  element =  null;
 					element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
 				    boolean enabled = element.getSize().getHeight()>0;

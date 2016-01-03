@@ -47,6 +47,7 @@ public class RP_010_ConnectWithFacebook extends LoginHelper{
 				if(currContext.contains("WEBVIEW")){
 					Reporter.SuccessReport("validate switch to web context", 
 							" Successfull switched to web context"+currContext);
+					Thread.sleep(10000);
 					((IOSDriver) driver).context(currContext);
 					String title = Iosdriver.getTitle();
 					System.out.println(Iosdriver.getContext()+" ++++ "+title);
@@ -81,7 +82,6 @@ public class RP_010_ConnectWithFacebook extends LoginHelper{
 						scrollToText("SIGN OUT");
 						waitForElementPresent(AccountPageLocators.signOutButton, "signOutButton");
 						 click(AccountPageLocators.signOutButton, "signOutButton");
-						 Thread.sleep(2000);	
 						 break;
 					  }
 				}
