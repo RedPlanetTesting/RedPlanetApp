@@ -15,8 +15,10 @@
 	<property name="ng.result" value="${ws.home}/TestNGResults/test-output"/>
 	<property name="ws.Run-Excel" value="${basedir}/Run_Excel"/>
 
-
-	<target name="setClassPath" unless="test.classpath">
+	<target name="deleteTransJars" unless="test.classpath">
+		<delete dir="${ws.jars}/com/google/collections"/>
+	</target>
+	<target name="setClassPath" depends="deleteTransJars">
 		<path id="classpath_jars">
 
 			<fileset dir="${ws.jars}" includes="**/*.jar"/>

@@ -14,27 +14,11 @@
 	</properties>
 
 	<dependencies>
-	     <!-- dependency>
-            <groupId>com.google.android</groupId>
-            <artifactId>android</artifactId>
-            <version>4.1.1.4</version>
-            <scope>provided</scope>
-        </dependency-->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server</artifactId>
-			<version>2.47.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.7.2</version>
 		</dependency>
 		<!-- Read data from Excel sheet it is only for .xls files -->
 		<dependency>
@@ -49,11 +33,6 @@
 			<version>6.8</version>
 			<!-- Bugzilla Jar files -->
 		</dependency>
-		<dependency>
-			<groupId>com.j2bugzilla</groupId>
-			<artifactId>j2bugzilla</artifactId>
-			<version>2.2</version>
-		</dependency>
 		<!-- This Jar file is to avoid firefox exception -->
 		<dependency>
 			<groupId>xml-apis</groupId>
@@ -67,8 +46,6 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.8</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.apache.xmlbeans</groupId>
 			<artifactId>xmlbeans</artifactId>
@@ -77,7 +54,6 @@
 
 		<!-- <dependency> <groupId>org.apache.xmlbeans</groupId> <artifactId>xmlbeans</artifactId> 
 			<version>2.4.0</version> </dependency> -->
-
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -88,7 +64,6 @@
 			<artifactId>poi</artifactId>
 			<version>3.9</version>
 		</dependency>
-
 		<!-- <dependency> <groupId>br.eti.kinoshita</groupId> <artifactId>testlink-java-api</artifactId> 
 			<version>1.9.7-0</version> </dependency> -->
 		<!-- To send email using Java -->
@@ -115,14 +90,15 @@
 		<dependency>
   			<groupId>io.appium</groupId>
  	 		<artifactId>java-client</artifactId>
-  			<version>2.1.0</version>
+  			<version>3.3.0</version>
+  			<scope>google-collections</scope>
+  			<exclusions>
+        		<exclusion>
+            		<groupId>com.google.collections</groupId>
+            		<artifactId>google-collections</artifactId>
+        		</exclusion>
+    		</exclusions>
 		</dependency>
-			<dependency>
-        	<groupId>com.sikulix</groupId>
-        	<artifactId>sikulixapi</artifactId>
-      	  <version>1.1.0</version>
-    </dependency>
-			
 	</dependencies>
 	<groupId>RedPlanetMobile</groupId>
 </project>
