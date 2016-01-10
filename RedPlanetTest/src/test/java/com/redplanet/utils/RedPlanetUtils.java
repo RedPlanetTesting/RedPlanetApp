@@ -10,7 +10,6 @@ import org.apache.commons.exec.DefaultExecuteResultHandler;
 import org.apache.commons.exec.DefaultExecutor;
 
 import com.ctaf.accelerators.TestEngine;
-import com.ctaf.utilities.Zip;
 public class RedPlanetUtils  extends TestEngine{
 
 	
@@ -87,31 +86,7 @@ public class RedPlanetUtils  extends TestEngine{
 		return isPlaying;
 	}*/	
 	
-	public static void zipMailQuickflixReports(){
-		try {
-			String filePath = System.getProperty("user.dir") + "\\"
-					+ filePath() + "\\SummaryResults_" + timeStamp+ ".html";
-			//System.out.println("filePath = "+filePath());
-			Zip.zipFolder(System.getProperty("user.dir") + "\\"
-					+ filePath(), System.getProperty("user.dir") + 
-					"\\"+"QuickflixReports.zip");
-			/*String sendReporMailFlag = xlsrdr.getCellValue(
-					"sendReprotMailFlag", "value");*/
-			if (/*sendReporMailFlag.equalsIgnoreCase("TRUE")*/true) {
-				
-				try {
-					MailUtility.sendReportAsMailBody(filePath,
-							"Test Summary Report " + timeStamp,System.getProperty("user.dir") + 
-							"\\"+"QuickflixReports.zip");
-				} catch (Throwable e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+	
 
 	public static boolean startAppium(String LogfileName) throws Throwable {
 		boolean result = false;
