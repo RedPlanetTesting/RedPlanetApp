@@ -136,6 +136,18 @@ public class ActionEngine extends TestEngine {
 		}
 	}
 
+    
+    public void verifyElementDisplayed(By by, String Description) throws Throwable{
+        
+        if(isElementDisplayed(by)){
+            Reporter.SuccessReport(Description, "Successful");
+        }else{
+            Reporter.failureReport(Description, "Failed");
+        }
+        
+    }
+    
+    
 	public static boolean scrollToText(final String text)
 			throws Throwable {
 		boolean flag = false;
