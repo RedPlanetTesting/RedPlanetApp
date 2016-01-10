@@ -54,7 +54,7 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 			  type(InHousePhoneLocators.ChatNameInput, chatName, "ChatNameInput");
 			  click(InHousePhoneLocators.sendButtonForChat, "sendButtonForChat");
 			}
-			  String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage);
+			  String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage, "test32346");
 			  if(replyMsg!= null){
 				  if(isElementDisplayed(HomePageLocators.chatWithFrontDeskButton)){
 					  click(HomePageLocators.chatWithFrontDeskButton, "chatWithFrontDeskButton");
