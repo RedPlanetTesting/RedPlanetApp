@@ -44,7 +44,7 @@ public class GeneralHelper extends GmailHelper{
 		return res;
 	}
 	
-public static String FrontDeskChat(String url,String userId,String password,String message) throws Throwable{
+public static String FrontDeskChat(String url,String userId,String password,String message, String firstMessage) throws Throwable{
 		boolean result = false;
 		String newMessage = message+"_From Admin";
 		String returnMessage = null; 
@@ -64,9 +64,9 @@ public static String FrontDeskChat(String url,String userId,String password,Stri
 			 	waitForElementPresent(browser,FrontDeskWebLocators.allIssuesLink, "allIssuesLink");
 			 	click(browser,FrontDeskWebLocators.allIssuesLink, "allIssuesLink");
 			 	waitForElementPresent(browser,FrontDeskWebLocators.searchInputBox, "searchInputBox");
-			 	type(browser,FrontDeskWebLocators.searchInputBox,"Test message","searchInputBox");
+			 	type(browser,FrontDeskWebLocators.searchInputBox,firstMessage,"searchInputBox");
 			 	Thread.sleep(5000);
-			    click(browser, By.xpath(FrontDeskWebLocators.Testmessage.replace("#", "Test message")), "Testmessage");
+			    click(browser, By.xpath(FrontDeskWebLocators.Testmessage.replace("#", firstMessage)), firstMessage);
 			    Thread.sleep(5000);
 			    waitForElementPresent(browser,FrontDeskWebLocators.textAreaForAdminChat, "textAreaForAdminChat");
 			    type(browser,FrontDeskWebLocators.textAreaForAdminChat,newMessage, "textAreaForAdminChat");

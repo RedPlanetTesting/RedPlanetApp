@@ -11,6 +11,12 @@
 			</groups>
 		<classes>			
 		
+		    <class name="com.androidMobile.scripts.RP_Smoke_TestAboutUs" />
+			<class name="com.androidMobile.scripts.RP_Smoke_TestBookNow" />
+			<class name="com.androidMobile.scripts.RP_Smoke_TestHomeMainMenu" />
+			<class name="com.androidMobile.scripts.RP_Smoke_TestMyAccount" />
+			<class name="com.androidMobile.scripts.RP_Smoke_TestRetrieveBookings" />
+			
 			<class name="com.androidMobile.scripts.RP_001_TestLoginFromMyAccount" />
 			<class name="com.androidMobile.scripts.RP_002_TestLogInFromBookingScreen" />
 			<class name="com.androidMobile.scripts.RP_003_TestSearchHotels" />
@@ -28,6 +34,9 @@
 			<class name="com.androidMobile.scripts.RP_015_TestChatWithFrontDesk" />
 			<class name="com.androidMobile.scripts.RP_016_TestTabsLocalAttractions" />
 			<class name="com.androidMobile.scripts.RP_017_TestInputCreditCards" />
+			
+			
+			
 			
 		</classes>
 	</test>

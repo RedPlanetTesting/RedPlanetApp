@@ -7,7 +7,7 @@ import com.ctaf.accelerators.ActionEngine;
 public class AccountPageLocators extends ActionEngine {
 
 	public static By accountScreenTitle = By
-			.xpath("//*[@text='ACCOUNT");
+			.xpath("//*[@text='ACCOUNT']");
 	public static By EditLink = By
 			.xpath("//*[@text='EDIT']");
 	public static By userName = By

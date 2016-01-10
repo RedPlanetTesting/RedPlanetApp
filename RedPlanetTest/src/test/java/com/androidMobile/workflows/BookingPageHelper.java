@@ -109,6 +109,9 @@ public class BookingPageHelper extends HomePageHelper {
 			scrollToElement(BookPageLocators.bookButton);
 			waitForElementPresent(BookPageLocators.bookButton, "bookButton");
 			click(BookPageLocators.bookButton, "bookButton");
+			if(isElementDisplayed(BookPageLocators.bookButton)){
+				click(BookPageLocators.bookButton, "bookButton");
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}		

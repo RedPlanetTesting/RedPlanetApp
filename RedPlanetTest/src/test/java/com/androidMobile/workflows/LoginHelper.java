@@ -22,7 +22,7 @@ public class LoginHelper extends HomePageHelper {
 			waitForElementPresent(LoginPageLocators.signInButton,
 					"signInButton");
 			click(LoginPageLocators.signInButton, "signInButton");
-			Thread.sleep(3000);
+			Thread.sleep(10000);
 			handleRateAppPopUp();
 			handleSplashDialog();
 			if(waitForElementPresent(LoginPageLocators.nameInputField,"nameInputField")){				
@@ -58,10 +58,10 @@ public class LoginHelper extends HomePageHelper {
 						"signInButton");
 				click(LoginPageLocators.signInButton, "signInButton");
 				handleRateAppPopUp();
-				if(!(isElementDisplayed(LoginPageLocators.nameInputField))){				
-					/*waitForElementPresent(LoginPageLocators.okayButtonOnErrorpop,
+				if(!(isElementDisplayedTemp(LoginPageLocators.nameInputField))){				
+					waitForElementPresent(LoginPageLocators.okayButtonOnErrorpop,
 							"okayButtonOnErrorpop");
-					click(LoginPageLocators.okayButtonOnErrorpop, "okayButtonOnErrorpop");*/
+					click(LoginPageLocators.okayButtonOnErrorpop, "okayButtonOnErrorpop");
 					driver.navigate().back();
 				}
 			}catch(Exception e){
