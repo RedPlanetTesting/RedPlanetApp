@@ -3,6 +3,7 @@ package com.androidMobile.scripts;
 import org.testng.annotations.Test;
 
 import com.androidMobile.scripts.testObjects.AboutUsLocators;
+import com.androidMobile.scripts.testObjects.HomePageLocators;
 import com.androidMobile.workflows.LoginHelper;
 import com.ctaf.accelerators.TestEngine;
 import com.ctaf.support.HtmlReportSupport;
@@ -31,10 +32,8 @@ public class RP_013_TestFooterLinksInAboutUs extends LoginHelper{
 			  }else{
 				  Reporter.failureReport("Validate Terms&Conditions Screen in AboutUs page", "Failed");
 			  }
-			  AndroidDriver2.closeApp();
-			  Thread.sleep(3000);
-			  
-			  AndroidDriver2.launchApp();
+			  driver.navigate().back();
+			  waitForElementPresent(HomePageLocators.mainMenuIcon, "HomePageLocators.mainMenuIcon");
 			  handleRateAppPopUp();
 			  handleSplashDialog();
 			  Thread.sleep(5000);
@@ -53,9 +52,8 @@ public class RP_013_TestFooterLinksInAboutUs extends LoginHelper{
 				  Reporter.failureReport("Validate Privacy policy Screen in AboutUs page", "Failed");
 			  }
 
-			  AndroidDriver2.closeApp();
-			  Thread.sleep(3000);
-			  AndroidDriver2.launchApp();
+			  driver.navigate().back();
+			  waitForElementPresent(HomePageLocators.mainMenuIcon, "HomePageLocators.mainMenuIcon");
 			  handleRateAppPopUp();
 			  handleSplashDialog();
 			  Thread.sleep(5000);
@@ -69,6 +67,8 @@ public class RP_013_TestFooterLinksInAboutUs extends LoginHelper{
 				  handleSplashDialog();
 			  if(isElementDisplayed(AboutUsLocators.termsOfUseScreen)) { 
 				  Reporter.SuccessReport("Validate TermsofUse Screen in AboutUs page", "Successful");
+				  driver.navigate().back();
+				  waitForElementPresent(HomePageLocators.mainMenuIcon, "HomePageLocators.mainMenuIcon");
 			  }else{
 				  Reporter.failureReport("Validate TermsofUse Screen in AboutUs page", "Failed");
 			  }

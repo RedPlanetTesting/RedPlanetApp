@@ -64,7 +64,7 @@ public class RP_011_Forgot_Password extends LoginHelper{
 					  "emailFieldForForgotPswd");
 			 type(LoginPageLocators.emailFieldForForgotPswd, email, "emailFieldForForgotPswd");
 			 click(LoginPageLocators.resetButton, "resetButton");
-			 System.out.println(AndroidDriver2.getPageSource());
+			 //System.out.println(AndroidDriver2.getPageSource());
 			 if(isElementDisplayed(LoginPageLocators.errorPop)){
 				 String errMsg = getText(LoginPageLocators.errorPop, "errorPop");
 				 System.out.println(" errMsg "+errMsg);
