@@ -16,7 +16,7 @@ public class InHousePhoneLocators {
 	public static By textAreaForChat = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/hs__conversationDetail']");
 	public static By textAreaForChat2 = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/hs__messageText']");
 	public static By ChatNameInput = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/hs__username']");
-	public static By sendButtonForChat = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/hs__action_add_conversation']");
+	public static By sendButtonForChat = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/hs__start_new_conversation']");
 	public static By sendButtonForChat2 = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/hs__sendMessageBtn']");
 			
 	

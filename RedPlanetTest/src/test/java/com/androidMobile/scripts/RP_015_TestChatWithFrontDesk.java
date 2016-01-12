@@ -20,7 +20,7 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 			"RP_ANDR_015");
 		@Test(dataProvider = "testData",groups={"Android"})
   public void testChatWithFrontDesk(String email,String password,String chatName,String chatAdminEmail, 
-		 String chatAdminPassword, String description) throws Throwable {
+		 String chatAdminPassword,String FirstMsg, String description) throws Throwable {
 			Calendar cal = Calendar.getInstance();
 			String chatUrl = xlsChatFrontDesk.getCellValue("chatURL", "Value");
 			boolean res = false;
@@ -50,11 +50,11 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 			  type(InHousePhoneLocators.textAreaForChat, testMessage, "textInputField");
 			  waitForElementPresent(InHousePhoneLocators.textAreaForChat, "textAreaForChat");
 			  
-			  click(InHousePhoneLocators.ChatNameInput, "ChatNameInput");
-			  type(InHousePhoneLocators.ChatNameInput, chatName, "ChatNameInput");
+			  //click(InHousePhoneLocators.ChatNameInput, "ChatNameInput");
+			  //type(InHousePhoneLocators.ChatNameInput, chatName, "ChatNameInput");
 			  click(InHousePhoneLocators.sendButtonForChat, "sendButtonForChat");
 			}
-			  String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage, "test32346");
+			  String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage, FirstMsg);
 			  if(replyMsg!= null){
 				  if(isElementDisplayed(HomePageLocators.chatWithFrontDeskButton)){
 					  click(HomePageLocators.chatWithFrontDeskButton, "chatWithFrontDeskButton");
@@ -79,7 +79,8 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 	    return (Object[][]) new Object[][] { 
 	    		{xlsChatFrontDesk.getCellValue("ValidCredentials", "Value"),xlsChatFrontDesk.getCellValue("ValidCredentials", "password"),
 	    			xlsChatFrontDesk.getCellValue("chatName", "Value"),xlsChatFrontDesk.getCellValue("ChatLoginID", "Value"),
-	    			xlsChatFrontDesk.getCellValue("ChatLoginID", "password"),"Validate chat with FrontDesk"}};
+	    			xlsChatFrontDesk.getCellValue("ChatLoginID", "password"),xlsChatFrontDesk.getCellValue("FirstMsg", "Value"),
+	    			"Validate chat with FrontDesk"}};
 	}
 }
 

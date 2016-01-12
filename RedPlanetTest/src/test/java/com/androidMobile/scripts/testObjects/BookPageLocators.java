@@ -14,9 +14,9 @@ public class BookPageLocators extends ActionEngine{
 			.xpath("//*[@resource-id='com.redplanethotels.staging:id/guestdatabynum_container']");
 	public static By guestRadioButton = By
 			.xpath("//*[@text='I have read and agree to the Terms and Conditions and Room Rates']");
-	public static By firstNameInput = By.xpath("//*[contains(@text,'First Name')]");
-	public static By lastNameInput = By.xpath("//*[contains(@text,'Last Name')]");
-	public static By EmailInput = By.xpath("//*[contains(@text,'Email')]");
+	public static By firstNameInput = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/guestdata_firstname']");
+	public static By lastNameInput = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/guestdata_lastname']");
+	public static By EmailInput = By.xpath("//*[@resource-id='com.redplanethotels.staging:id/guestdata_email']");
 	public static By cardHolderInput = By
 			.xpath("//*[@resource-id='com.redplanethotels.staging:id/payment_holder']");
 	public static By cardNumInput = By
