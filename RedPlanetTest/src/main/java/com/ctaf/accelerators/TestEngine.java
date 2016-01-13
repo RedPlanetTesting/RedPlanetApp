@@ -238,11 +238,12 @@ public class TestEngine extends HtmlReportSupport {
 				capabilitiesForAppium.setCapability("fullReset", true);
 				capabilitiesForAppium.setCapability("appPackage", AppPackage);
 				capabilitiesForAppium.setCapability("appActivity", AppActivity);
+				System.out.println(ipk.getCanonicalPath());
 				capabilitiesForAppium.setCapability("app", ipk.getCanonicalPath());
 				AndroidDriver2 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 						capabilitiesForAppium);
 				driver = (AndroidDriver2);
-				driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
