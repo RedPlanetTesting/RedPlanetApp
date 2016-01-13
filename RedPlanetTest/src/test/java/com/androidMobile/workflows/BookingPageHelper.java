@@ -14,13 +14,14 @@ public class BookingPageHelper extends HomePageHelper {
 			String email,String phone) throws Throwable{	
 		String temp = "abcdefghijklmnopqrstABCDEFGHIJKLMNOP";
 		int randomval = ReportStampSupport.biRandomValue();
+		int randomval2 = ReportStampSupport.biRandomValue();
 		try {
 			/*waitForElementPresent(BookPageLocators.guestDetailsFrame,
 					"guestDetailsFrame");*/
 			if(fName.length()>0){
 				scrollToElement(BookPageLocators.firstNameInput);
 				waitForElementPresent(BookPageLocators.firstNameInput,"firstNameInput");
-			type(BookPageLocators.firstNameInput, (fName+temp.charAt(randomval)).toString(), "firstNameInput");	
+			type(BookPageLocators.firstNameInput, (fName+temp.charAt(randomval)+temp.charAt(randomval2)).toString(), "firstNameInput");	
 			}
 			if(lName.length()>0){
 				//scrollToText("Email");

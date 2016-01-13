@@ -16,5 +16,5 @@ public class RetrieveBookingLocators {
 			.xpath("//*[@text='DONE']");	
 	public static By bookingDetailView  = By.xpath("//*[@text='View Booking']");
 	public static By retrieveBookingsScreenTitle = By
-			.xpath("//*[contains(@resource-id,'titlebar_tv_label') and contains(@text,'RETRIEVE BOOKINGS')]");	
+			.xpath("//*[contains(@text,'RETRIEVE')]");	
 }

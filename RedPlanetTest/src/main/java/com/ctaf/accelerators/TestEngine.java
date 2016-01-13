@@ -31,9 +31,7 @@ import com.ctaf.support.ExcelReader;
 import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.support.ReportStampSupport;
 import com.ctaf.utilities.Reporter;
-//import com.redplanet.utils.RedPlanetUtils;
-//import com.redplanet.utils.RedPlanetUtils;
-import com.redplanet.utils.RedPlanetUtils;
+
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -223,6 +221,9 @@ public class TestEngine extends HtmlReportSupport {
 				String AppPackage = configProps.getProperty("appPackage");
 				String AppActivity = configProps.getProperty("appActivity");
 				String OSVersion =  configProps.getProperty("OSVersion");
+				String ipkPath = configProps.getProperty("apkPath");
+				String tempIPK = System.getProperty("user.dir")+ipkPath;
+				File ipk = new File(tempIPK);
 				// ---------------------------------------------------
 				
 				// -----------------------------------------------------
@@ -234,14 +235,14 @@ public class TestEngine extends HtmlReportSupport {
 				capabilitiesForAppium.setCapability("newCommandTimeout","120000");
 				//capabilitiesForAppium.setCapability("autoWebview", "true");
 				capabilitiesForAppium.setCapability("autoWebviewTimeout","1000");
-				//capabilitiesForAppium.setCapability("noReset", false);
+				capabilitiesForAppium.setCapability("fullReset", true);
 				capabilitiesForAppium.setCapability("appPackage", AppPackage);
 				capabilitiesForAppium.setCapability("appActivity", AppActivity);
-				
+				capabilitiesForAppium.setCapability("app", ipk.getCanonicalPath());
 				AndroidDriver2 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 						capabilitiesForAppium);
 				driver = (AndroidDriver2);
-				driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
 				
 			} catch (Exception e) {
 				e.printStackTrace();

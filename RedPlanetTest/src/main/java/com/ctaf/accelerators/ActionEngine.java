@@ -174,65 +174,76 @@ public class ActionEngine extends TestEngine {
 		}*/
 	}
 	public static boolean scrollToElement(By locator)
-			throws Throwable {
-		boolean flag = false;
-		try {
-			if(!(isElementDisplayedTemp(locator))){
-	                try
-	                {
-	                	for(int i=1;;i=i+1){
-	                		WebElement we1 = driver.findElement(By.xpath("//*[1]"));
-	                		List<WebElement> wes = driver.findElements(By.xpath("//*")); 
-                			System.out.println(wes.size()-1);
-	                		if((i>1)){
-	                			if(!(we1.equals(wes.get(wes.size()-1)))){
-	                			Point pt = wes.get(1).getLocation();
-	                			if(browser.toLowerCase().contains("android")){
-	                			AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 1000);
-	                			}else {
-	                				Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 1000);
-	                			}
-		                		we1 = wes.get(wes.size()-1);
-	                			}
-	                		}else{
-	                			try{
-	                				Point pt = wes.get(1).getLocation();
-	                				if(browser.toLowerCase().contains("android")){
-	                					AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
-	                				}else{
-	                					Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
-	                				}
-	                			}catch(Exception e1){
-	                				//e1.printStackTrace();
-	                			}
-	                		}
-	                	System.out.println("scrolling..");
-	                		if((isElementDisplayedTemp(locator))){
-	                			Thread.sleep(1000);
-	                			flag = true;
-	                			break;
-	                		}
-	                	}
-	                }catch (Exception e)
-	                {
-	                  e.printStackTrace();
-	                }
-			}
-			return flag;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} /*finally {
-			if (!flag) {
-				Reporter.failureReport("Check IsElementPresent ", locatorName
-						+ " Element is not present on the page");
-				Assert.assertTrue(flag,"Unable find the element "+ locatorName);
-			} else if (b && flag) {
-				Reporter.SuccessReport("IsElementPresent ",
-						"Able to locate element " + locatorName);
-			}
-		}*/
-	}
+    throws Throwable {
+        boolean flag = false;
+        WebElement we1 = null;
+        try {
+            if(!(isElementDisplayedTemp(locator))){
+                try
+                {
+                    for(int i=1;(!(isElementDisplayedTemp(locator)))|(i<100);i=i+1){
+                        /*WebElement we1 = driver.findElement(By.xpath("//*[1]"));
+                         List<WebElement> wes = driver.findElements(By.xpath("//*"));
+                         System.out.println(wes.size()-1);*/
+                        if((i==1)){
+                            we1 = driver.findElement(By.xpath("//*[1]"));
+                            List<WebElement> wes = driver.findElements(By.xpath("//*"));
+                            System.out.println(wes.size()-1);
+                            if(!(we1.equals(wes.get(1)))){
+                                Point pt = wes.get(1).getLocation();
+                                if(browser.toLowerCase().contains("android")){
+                                    AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
+                                }else {
+                                    Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
+                                }
+                                we1 = wes.get(1);
+                            }
+                        }else{
+                            try{
+                                List<WebElement> wes = driver.findElements(By.xpath("//*"));
+                                System.out.println(wes.size()-1);
+                                if(!(we1.equals(wes.get(1)))){
+                                    Point pt = wes.get(1).getLocation();
+                                    if(browser.toLowerCase().contains("android")){
+                                        AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
+                                    }else{
+                                        Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
+                                    }
+                                }else{
+                                    System.out.println("reached end of screen , unable to find elemenet");
+                                }
+                                we1 = wes.get(1);
+                            }catch(Exception e1){
+                                //e1.printStackTrace();
+                            }
+                        }
+                        System.out.println("scrolling..");
+                        if((isElementDisplayedTemp(locator))){
+                            Thread.sleep(1000);
+                            flag = true;
+                            break;
+                        }
+                    }
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            return flag;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } /*finally {
+           if (!flag) {
+           Reporter.failureReport("Check IsElementPresent ", locatorName
+           + " Element is not present on the page");
+           Assert.assertTrue(flag,"Unable find the element "+ locatorName);
+           } else if (b && flag) {
+           Reporter.SuccessReport("IsElementPresent ",
+           "Able to locate element " + locatorName);
+           }
+           }*/
+    }
 	
 	public static boolean waitForElementHasSomeText(final By by, String locator)
 			throws Throwable {
