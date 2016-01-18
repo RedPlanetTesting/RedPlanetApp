@@ -24,6 +24,7 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 			Calendar cal = Calendar.getInstance();
 			String chatUrl = xlsChatFrontDesk.getCellValue("chatURL", "Value");
 			boolean res = false;
+			boolean sendMsg = false;
 	  try{
 		  TestEngine.testDescription.put(HtmlReportSupport.tc_name, description);
 		  String testMessage = "Test message "+cal.getTime();
@@ -43,7 +44,7 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 				  click(InHousePhoneLocators.textAreaForChat2, "textAreaForChat2");
 				  type(InHousePhoneLocators.textAreaForChat2, testMessage, "textAreaForChat2");
 				  waitForElementPresent(InHousePhoneLocators.sendButtonForChat2, "sendButtonForChat2");
-				  click(InHousePhoneLocators.sendButtonForChat2, "sendButtonForChat2");
+				  sendMsg =  click(InHousePhoneLocators.sendButtonForChat2, "sendButtonForChat2");
 			}else{
 				waitForElementPresent(InHousePhoneLocators.textAreaForChat, "textAreaForChat");
 			  click(InHousePhoneLocators.textAreaForChat, "textInputField");
@@ -52,14 +53,15 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 			  
 			  //click(InHousePhoneLocators.ChatNameInput, "ChatNameInput");
 			  //type(InHousePhoneLocators.ChatNameInput, chatName, "ChatNameInput");
-			  click(InHousePhoneLocators.sendButtonForChat, "sendButtonForChat");
+			  sendMsg = click(InHousePhoneLocators.sendButtonForChat, "sendButtonForChat");
 			}
-			  String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage, FirstMsg);
-			  if(replyMsg!= null){
+			 // String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage, FirstMsg);
+			  if(/*replyMsg!= null*/sendMsg){
+				  driver.navigate().back();
 				  if(isElementDisplayed(HomePageLocators.chatWithFrontDeskButton)){
 					  click(HomePageLocators.chatWithFrontDeskButton, "chatWithFrontDeskButton");
 				  }
-				  res = AndroidDriver2.getPageSource().contains(replyMsg);
+				  res = AndroidDriver2.getPageSource().contains(/*replyMsg*/testMessage);
 			  	}
 				  System.out.println("resutl "+res);
 				  if(res){
