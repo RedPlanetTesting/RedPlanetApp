@@ -23,6 +23,9 @@ public class RP_002_TestLogInFromBookingScreen  extends LoginHelper{
 		  TestEngine.testDescription.put(HtmlReportSupport.tc_name, 
 					description);	
 		  handleSplashDialog();
+		  navigateToMyAccount();
+			handleRateAppPopUp();
+			logOut();
 		  //verify user already loggedIn, if yes signout
 		  navigateToBookNow();
 		  handleRateAppPopUp();
@@ -33,10 +36,13 @@ public class RP_002_TestLogInFromBookingScreen  extends LoginHelper{
 		  handleRateAppPopUp();
 		  waitForElementPresent(PickRoomPageLocators.pickRoomPage, 
 				  "pickRoomPage");
+		  waitForElementPresent(PickRoomPageLocators.bookNowButton, "bookNowButton");
 		  click(PickRoomPageLocators.bookNowButton, "bookNowButton");
 		  handleRateAppPopUp();
 		  waitForElementPresent(BookPageLocators.contiuneButton, 
 				  "contiuneButton");
+		  scrollToElement(BookPageLocators.logInButton);
+		  waitForElementPresent(BookPageLocators.logInButton, "logInButton");
 		  click(BookPageLocators.logInButton, "logInButton");
 		  handleRateAppPopUp();
 		  userlogin(email, password);
