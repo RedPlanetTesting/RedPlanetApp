@@ -13,11 +13,11 @@ public class AccountPageLocators extends ActionEngine {
 	public static By userNationality = By
 			.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[2]");
 	public static By userPassport = By
-			.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[2]");
+			.xpath("//*[@name='PASSPORT']");
 	public static By userResidence = By
 			.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[4]/UIAStaticText[2]");
 	public static By userPhone = By
-			.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[5]/UIAStaticText[2]");
+			.xpath("//*[@name='PHONE']");
 	public static By signOutButton = By.xpath("//UIAButton[@name='SIGN OUT']");
 	
 	public static By signUpDataValidationAlert = By.xpath("//UIAStaticText[@name='Sorry!']");

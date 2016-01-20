@@ -24,6 +24,8 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 			Calendar cal = Calendar.getInstance();
 			String chatUrl = xlsChatFrontDesk.getCellValue("chatURL", "Value");
 			boolean res = false;
+			boolean sendMsg = false;
+			String testmsg = "Thank you for contacting us";
 	  try{
 		  TestEngine.testDescription.put(HtmlReportSupport.tc_name, description);
 		  handelSplashScreen();
@@ -43,15 +45,17 @@ public class RP_015_TestChatWithFrontDesk  extends LoginHelper{
 			  click(InHousePhoneLocators.textInputField, "textInputField");
 			  type(InHousePhoneLocators.textInputField, testMessage, "textInputField");
 			  waitForElementPresent(InHousePhoneLocators.sendButtonForChat, "sendButtonForChat");
-			  click(InHousePhoneLocators.sendButtonForChat, "sendButtonForChat");
-			  String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage);
-			  if(replyMsg!= null){
-				  res = Iosdriver.getPageSource().contains(replyMsg);
+			  sendMsg = click(InHousePhoneLocators.sendButtonForChat, "sendButtonForChat");
+			  //String replyMsg = GeneralHelper.FrontDeskChat(chatUrl, chatAdminEmail, chatAdminPassword, testMessage);
+			  if(/*replyMsg!= null*/sendMsg){
+				  Thread.sleep(6000);
+				  System.out.println(Iosdriver.getPageSource());
+				  res = Iosdriver.getPageSource().contains(/*replyMsg*/testmsg);
 			  	}
 				  System.out.println("resutl "+res);
 				  if(res){
 					  Reporter.SuccessReport(description, " Successful");
-					  System.out.println("successfully calling Front Desk ");
+					  System.out.println("successfully sent chat to front desk ");
 				  }else{
 					  Reporter.failureReport(description, " Failed");
 				  }

@@ -82,12 +82,12 @@ public class RP_017_TestInputCreditCards extends LoginHelper{
 		  				xlsCards.getCellValue("email", "Value"),xlsCards.getCellValue("AMEXCardHolder", "Value"),
 		  				xlsCards.getCellValue("AMEXCardNum", "Value"),xlsCards.getCellValue("AMEXExpirationMonth", "Value"),
 				  	xlsCards.getCellValue("AMEXexpirationYear", "Value"), xlsCards.getCellValue("AMEXcvv", "Value"),
-				   "Validate American Express card payment"},
+				   "Validate American Express card payment"}/*,
 				 {xlsCards.getCellValue("country", "Value"),xlsCards.getCellValue("city", "Value"),
 		  				xlsCards.getCellValue("fName", "Value"),xlsCards.getCellValue("lName", "Value"),
 		  				xlsCards.getCellValue("email", "Value"),xlsCards.getCellValue("ChinaUnionCardHolder", "Value"),
 		  				xlsCards.getCellValue("ChinaUnionCardNum", "Value"),xlsCards.getCellValue("ChinaUnionExpirationMonth", "Value"),
 				  	xlsCards.getCellValue("ChinaUnionexpirationYear", "Value"), xlsCards.getCellValue("ChinaUnioncvv", "Value"),
-				   "Validate China Union card payment"}};
+				   "Validate China Union card payment"}*/};
 	}
 }

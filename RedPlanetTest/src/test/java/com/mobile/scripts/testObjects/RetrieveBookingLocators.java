@@ -14,4 +14,6 @@ public class RetrieveBookingLocators {
 			.xpath("//*[@name='RPBookingDetailView']");
 	public static By doneButton = By
 			.xpath("//*[@text='DONE']");	
+	public static By retrieveBookingsScreenTitle = By
+			.xpath("//*[@name='RETRIEVE BOOKING']");
 }

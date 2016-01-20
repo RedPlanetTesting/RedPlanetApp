@@ -75,10 +75,10 @@ public class RP_006_BookingAsAMember extends LoginHelper{
 				 waitForElementPresent(AccountPageLocators.upcomingBookings, "upcomingBookings");
 				 Thread.sleep(10000);
 				 if((scrollToText(city))){
-					 String cost = totalBookingCost.trim();
+					 String cost = (totalBookingCost.split("[(]"))[0].trim();
 					 System.out.println(" Total Booking Cost is: "+cost);
-					 if((scrollToText(cost))){
-				 Reporter.SuccessReport("Validate Booking details under My Account Screen ",
+					 if((scrollToText(cost))|driver.getPageSource().contains(cost)){
+						 Reporter.SuccessReport("Validate Booking details under My Account Screen ",
 						 " Successfully validated Booking details City : "+bookedCity+" Hotel "
 						 		+bookedHotel+" From To Date "+bookingFromToDate+ " and Total Cost "+totalBookingCost);
 					 }else{
@@ -125,7 +125,6 @@ public class RP_006_BookingAsAMember extends LoginHelper{
   				xlsBook.getCellValue("cardNum", "Value"),xlsBook.getCellValue("expirationmonth", "Value"),
   				xlsBook.getCellValue("expirationyear", "Value"), xlsBook.getCellValue("cvv", "Value"),
   				true,"Validate Hotel Booking as a Guest with valid payment details"}
-  			
 			};
 	}
 }

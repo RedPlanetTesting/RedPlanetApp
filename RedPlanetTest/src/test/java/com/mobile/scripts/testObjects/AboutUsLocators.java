@@ -17,6 +17,7 @@ public class AboutUsLocators {
 	public static By privacyPolicyTitle = By.xpath("//UIAStaticText[@name='PRIVACY POLICY']");
 	public static By termsuseLink = By.xpath("//UIAButton[@label='Terms of Use']");
 	public static By termsOfUseTitle = By.xpath("//UIAStaticText[@name='TERMS OF USE']");
+	public static By aboutUsTitle = By.xpath("//UIAStaticText[@name='ABOUT US']");
 	
 	
 
