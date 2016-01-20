@@ -2,6 +2,7 @@ package com.mobile.scripts;
 
 import org.testng.annotations.Test;
 
+import com.androidMobile.scripts.testObjects.HomePageLocators;
 import com.ctaf.accelerators.TestEngine;
 import com.ctaf.support.HtmlReportSupport;
 import com.ctaf.utilities.Reporter;
@@ -29,9 +30,9 @@ public class RP_013_ValidateFooterLinksInAboutUs extends LoginHelper{
 				  }
 				  handelSplashScreen();
 				  //handleSplashDialog();
-				  Iosdriver.closeApp();
-				  Iosdriver.launchApp();
+				  driver.navigate().back();
 				  handelSplashScreen();
+				  waitForElementPresent(HomePageLocators.mainMenuIcon, "mainMenuIcon");
 				  //handleSplashDialog();
 				  navigateToAboutUs();		  
 				  scrollToText("Terms of Use");
@@ -44,9 +45,9 @@ public class RP_013_ValidateFooterLinksInAboutUs extends LoginHelper{
 				  }
 				  handelSplashScreen();
 				  //handleSplashDialog();
-				  Iosdriver.closeApp();
-				  Iosdriver.launchApp();
+				  driver.navigate().back();
 				  handelSplashScreen();
+				  waitForElementPresent(HomePageLocators.mainMenuIcon, "mainMenuIcon");
 				  //handleSplashDialog();
 				  navigateToAboutUs();
 				  waitForElementPresent(AboutUsLocators.termsuseLink,"termsuseLink");
@@ -56,6 +57,8 @@ public class RP_013_ValidateFooterLinksInAboutUs extends LoginHelper{
 				  }else{
 					  Reporter.failureReport("Validate TermsofUse link in AboutUs page", "Failed");
 				  }
+				  
+				  
 		 }catch (Exception e) {
 				e.printStackTrace();
 				Reporter.failureReport("Validate Footer links", "Failed to validate Footer links in AboutUp screen");

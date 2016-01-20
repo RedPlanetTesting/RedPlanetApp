@@ -3,6 +3,7 @@ package com.mobile.scripts;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.androidMobile.workflows.GmailHelper;
 import com.ctaf.accelerators.TestEngine;
 import com.ctaf.support.ExcelReader;
 import com.ctaf.support.HtmlReportSupport;
@@ -52,7 +53,7 @@ public class RP_011_TestForgotPassword  extends LoginHelper{
 			  click(ForgotPasswordLocators.resetPasswordButton, "resetPasswordButton");
 			 if(description.contains("valid email ID")){
 			  waitForElementPresent(LoginPageLocators.signInButton, "signInButton");
-			  ForgotPasswordHelper.ResetPasswordViaGmail(gmailUrl, email, password, newPass);
+			  GmailHelper.ResetPasswordViaGmail(gmailUrl, email, password, resetPwd);
 			  Iosdriver.closeApp();
 			  Iosdriver.launchApp();
 			  handelSplashScreen();
