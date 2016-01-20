@@ -782,6 +782,41 @@ public class HtmlReportSupport {
 
 	}
 
+	public static void onFailureContinue(String strStepName, String strStepDes, String randomValueForScreeShot) {
+		Writer writer = null;
+		try {
+			File file = new File(TestEngine.filePath() + "/" + strTestName+"_Results_"
+					+ TestEngine.timeStamp + ".html");// "SummaryReport.html"
+
+			writer = new FileWriter(file, true);
+			TestEngine.stepNum = TestEngine.stepNum + 1;
+
+			writer.write("<tr class='content2' >");
+			writer.write("<td>" + TestEngine.stepNum + "</td> ");
+			writer.write("<td class='justified'>" + strStepName + "</td>");
+			writer.write("<td class='justified'>" + strStepDes 
+					/*+" <a href= '"+TestEngine.driver.getCurrentUrl()
+					+ "'>" +TestEngine.driver.getCurrentUrl()+ "</a> "*/+ "</td> ");
+			TestEngine.FailNum = TestEngine.FailNum + 1;
+
+		
+			writer.write("<td class='Fail' align='center'><a  href='"+"./Screenshots"+"/"
+					+ strStepName.replace(" ", "_") + "_" + TestEngine.timeStamp + randomValueForScreeShot
+					+ ".jpeg'"+" alt= Screenshot  width= 15 height=15 style='text-decoration:none;'><img  src='./Screenshots/failed.ico' width='18' height='18'/></a></td>");
+
+			String strFailTime = ReportStampSupport.getTime();
+			writer.write("<td><small>" + strFailTime + "</small></td> ");
+			writer.write("</tr> ");
+			writer.close();
+			if (!map.get(packageName + ":" + tc_name).equals("PASS")) {
+				map.put(packageName + ":" + tc_name, "FAIL");
+				//map.put(TestTitleDetails.x.toString(), TestEngine.testDescription.get(TestTitleDetails.x.toString()));
+			}
+		} catch (Exception e) {
+
+		}
+
+	}
 	public static void testHeader(String testName) {
 		Writer writer = null;
 		try {

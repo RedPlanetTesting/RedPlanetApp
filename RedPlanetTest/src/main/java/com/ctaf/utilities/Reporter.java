@@ -104,6 +104,45 @@ public class Reporter extends TestEngine {
 		}
 
 	}
+	
+	public static void failureReportContinue(String strStepName, String strStepDes)
+			throws Throwable {
+		/*String strStepDes1 = strStepDes.replace(":", "_");
+		strStepDes1 = strStepDes1.replace("\\", "_");
+		strStepDes1 = strStepDes1.replace("/", "_");
+		strStepDes1 = strStepDes1.replace("?", "_");
+		strStepDes1 = strStepDes1.replace("*", "_");
+		strStepDes1 = strStepDes1.replace("<", "_");
+		strStepDes1 = strStepDes1.replace(">", "_");
+		System.out.println(strStepDes1);*/
+		String randomValue = ReportStampSupport.randomValue();
+		int intReporterType = Integer.parseInt(configProps
+				.getProperty("reportsType"));
+		switch (intReporterType) {
+		case 1:
+			flag = true;
+			break;
+		case 2:
+			ActionEngine.screenShot(TestEngine.filePath()+File.separator+"Screenshots"+File.separator
+					+ strStepName.replace(" ", "_") + "_"
+					+ TestEngine.timeStamp + randomValue + ".jpeg");
+			flag = true;
+			HtmlReportSupport.onFailureContinue(strStepName, strStepDes,randomValue);
+			break;
+
+		default:
+			flag = true;
+			ActionEngine.screenShot(TestEngine.filePath()+File.separator+"Screenshots"+File.separator
+					+ strStepName.replace(" ", "_") + "_"
+					+ TestEngine.timeStamp + randomValue + ".jpeg");
+			System.out.println(TestEngine.filePath()+File.separator+"Screenshots"+File.separator
+					+ strStepName.replace(" ", "_") + "_"
+					+ TestEngine.timeStamp + ".jpeg");
+			HtmlReportSupport.onFailureContinue(strStepName, strStepDes, randomValue);
+			break;
+		}
+
+	}
 	public static void warningReport(String strStepName, String strStepDes)
 			throws Throwable {
 		int intReporterType = Integer.parseInt(configProps
