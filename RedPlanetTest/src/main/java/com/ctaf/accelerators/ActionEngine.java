@@ -182,41 +182,42 @@ public class ActionEngine extends TestEngine {
                 try
                 {
                     for(int i=1;(!(isElementDisplayedTemp(locator)))|(i<100);i=i+1){
-                        /*WebElement we1 = driver.findElement(By.xpath("//*[1]"));
+                        
+                        /*if((i==1)){
+                         //we1 = driver.findElement(By.xpath("//*[1]"));
                          List<WebElement> wes = driver.findElements(By.xpath("//*"));
-                         System.out.println(wes.size()-1);*/
-                        if((i==1)){
-                            we1 = driver.findElement(By.xpath("//*[1]"));
+                         System.out.println(wes.size()-1);
+                         if(!(we1.equals(wes.get(1)))true){
+                         Point pt = wes.get(1).getLocation();
+                         if(browser.toLowerCase().contains("android")){
+                         AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
+                         }else {
+                         Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
+                         }
+                         we1 = wes.get((wes.size())-1);
+                         }
+                         }else{*/
+                        try{
                             List<WebElement> wes = driver.findElements(By.xpath("//*"));
-                            System.out.println(wes.size()-1);
-                            if(!(we1.equals(wes.get(1)))){
+                            System.out.println("i val "+i+" "+(wes.size()-1));
+                            if(!(isElementDisplayedTemp(we1))){
                                 Point pt = wes.get(1).getLocation();
+                                Point pt2 = wes.get(2).getLocation();
                                 if(browser.toLowerCase().contains("android")){
-                                    AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
-                                }else {
-                                    Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
-                                }
-                                we1 = wes.get(1);
-                            }
-                        }else{
-                            try{
-                                List<WebElement> wes = driver.findElements(By.xpath("//*"));
-                                System.out.println(wes.size()-1);
-                                if(!(we1.equals(wes.get(1)))){
-                                    Point pt = wes.get(1).getLocation();
-                                    if(browser.toLowerCase().contains("android")){
-                                        AndroidDriver2.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
-                                    }else{
-                                        Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 3000);
-                                    }
+                                    AndroidDriver2.swipe(pt.getX(), pt.getY(), pt2.getX(),
+                                                         pt2.getY(), 8000);
                                 }else{
-                                    System.out.println("reached end of screen , unable to find elemenet");
+                                    Iosdriver.swipe(pt.getX(), pt.getY(), pt.getX()+i, pt.getY()+i, 8000);
                                 }
-                                we1 = wes.get(1);
-                            }catch(Exception e1){
-                                //e1.printStackTrace();
+                            }else{
+                                System.out.println("reached end of screen , unable to find elemenet");
+                                break;
                             }
+                            we1 = wes.get((wes.size())-1);
+                        }catch(Exception e1){
+                            e1.printStackTrace();
                         }
+                        //}//
                         System.out.println("scrolling..");
                         if((isElementDisplayedTemp(locator))){
                             Thread.sleep(1000);

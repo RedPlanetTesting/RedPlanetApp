@@ -3,7 +3,6 @@ package com.androidMobile.scripts;
 import org.testng.annotations.Test;
 
 import com.androidMobile.scripts.testObjects.AboutUsLocators;
-import com.androidMobile.scripts.testObjects.HomePageLocators;
 import com.androidMobile.workflows.LoginHelper;
 import com.ctaf.accelerators.TestEngine;
 import com.ctaf.support.HtmlReportSupport;
@@ -18,9 +17,9 @@ public class RP_013_TestFooterLinksInAboutUs extends LoginHelper{
 				  "Validate footer links in AboutUs page");
 		  handleRateAppPopUp();
 		  handleSplashDialog();
-		  navigateToAboutUs();		  
-		  Thread.sleep(2000);	  
-		  //scrollToText("Privacy Policy");
+		  navigateToAboutUs();
+		  waitForElementPresent(AboutUsLocators.AboutUsTitle, "AboutUsTitle");
+		  scrollToText("Privacy Policy");
 		  handleRateAppPopUp();
 		  handleSplashDialog();
 		  waitForElementPresent(AboutUsLocators.termsNcondLink,"termsNcondLink");
@@ -32,13 +31,13 @@ public class RP_013_TestFooterLinksInAboutUs extends LoginHelper{
 			  }else{
 				  Reporter.failureReport("Validate Terms&Conditions Screen in AboutUs page", "Failed");
 			  }
-			  driver.navigate().back();
-			  waitForElementPresent(HomePageLocators.mainMenuIcon, "HomePageLocators.mainMenuIcon");
+			  AndroidDriver2.closeApp();
+			  AndroidDriver2.launchApp();
 			  handleRateAppPopUp();
 			  handleSplashDialog();
-			  Thread.sleep(5000);
 			  navigateToAboutUs();
-			  //scrollToText("Privacy Policy");
+			  waitForElementPresent(AboutUsLocators.AboutUsTitle, "AboutUsTitle");
+			  scrollToText("Privacy Policy");
 			  handleRateAppPopUp();
 			  handleSplashDialog();
 			  waitForElementPresent(AboutUsLocators.privacypolicyLink,"privacypolicyLink");
@@ -52,23 +51,21 @@ public class RP_013_TestFooterLinksInAboutUs extends LoginHelper{
 				  Reporter.failureReport("Validate Privacy policy Screen in AboutUs page", "Failed");
 			  }
 
-			  driver.navigate().back();
-			  waitForElementPresent(HomePageLocators.mainMenuIcon, "HomePageLocators.mainMenuIcon");
+			  AndroidDriver2.closeApp();
+			  AndroidDriver2.launchApp();
 			  handleRateAppPopUp();
 			  handleSplashDialog();
-			  Thread.sleep(5000);
 			  navigateToAboutUs();
+			  waitForElementPresent(AboutUsLocators.AboutUsTitle, "AboutUsTitle");
 			  handleRateAppPopUp();
 			  handleSplashDialog();
-			  //scrollToText("Privacy Policy");
+			  scrollToText("Privacy Policy");
 			  waitForElementPresent(AboutUsLocators.termsOfUseLink,"termsOfUseLink");
 				click(AboutUsLocators.termsOfUseLink,"termsOfUseLink");
 				  handleRateAppPopUp();
 				  handleSplashDialog();
 			  if(isElementDisplayed(AboutUsLocators.termsOfUseScreen)) { 
 				  Reporter.SuccessReport("Validate TermsofUse Screen in AboutUs page", "Successful");
-				  driver.navigate().back();
-				  waitForElementPresent(HomePageLocators.mainMenuIcon, "HomePageLocators.mainMenuIcon");
 			  }else{
 				  Reporter.failureReport("Validate TermsofUse Screen in AboutUs page", "Failed");
 			  }
