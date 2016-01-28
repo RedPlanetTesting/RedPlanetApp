@@ -135,7 +135,20 @@ public class ActionEngine extends TestEngine {
 
 		}
 	}
-
+    public static boolean isElementDisplayedTemp(WebElement we)
+    throws Throwable {
+        boolean flag = false;
+        try {
+            driver.manage().timeouts().implicitlyWait(50, TimeUnit.MILLISECONDS);
+            flag  = we.isDisplayed();
+            if(flag){
+                System.out.println("found the element ");
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return flag;
+    }
     
     public void verifyElementDisplayed(By by, String Description) throws Throwable{
         
